@@ -1,18 +1,19 @@
 /* ====== Reset ====== */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 
 /* ====== Global Variables (Style Guide + Theme) ====== */
-:root{
+:root {
   /* Typography */
   --ff-main: "Sofia Sans", Arial, sans-serif;
 
-  --fs-h1: 35px;
-  --fs-h2: 28px;
-  --fs-h3: 25px;
-  --fs-h4: 23px;
-  --fs-h5: 21px;
-  --fs-body: 18px;
+  /* Converted px -> rem to keep the same sizes (assuming 16px root) */
+  --fs-h1: 2.1875rem;  /* 35px */
+  --fs-h2: 1.75rem;    /* 28px */
+  --fs-h3: 1.5625rem;  /* 25px */
+  --fs-h4: 1.4375rem;  /* 23px */
+  --fs-h5: 1.3125rem;  /* 21px */
+  --fs-body: 1.125rem; /* 18px */
 
   --fw-thin: 100;
   --fw-extralight: 200;
@@ -39,7 +40,7 @@ html, body { height: 100%; }
 }
 
 /* ====== Base ====== */
-body{
+body {
   font-family: var(--ff-main);
   font-weight: var(--fw-light); /* Body Light */
   font-size: var(--fs-body);    /* Body 18 */
@@ -49,14 +50,14 @@ body{
 }
 
 /* Style guide headings (optional usage) */
-h1{ font-size: var(--fs-h1); font-weight: var(--fw-bold); line-height: normal; }
-h2{ font-size: var(--fs-h2); font-weight: var(--fw-bold); line-height: normal; }
-h3{ font-size: var(--fs-h3); font-weight: var(--fw-bold); line-height: normal; }
-h4{ font-size: var(--fs-h4); font-weight: var(--fw-bold); line-height: normal; }
-h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
+h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); line-height: normal; }
+h2 { font-size: var(--fs-h2); font-weight: var(--fw-bold); line-height: normal; }
+h3 { font-size: var(--fs-h3); font-weight: var(--fw-bold); line-height: normal; }
+h4 { font-size: var(--fs-h4); font-weight: var(--fw-bold); line-height: normal; }
+h5 { font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 
 /* ====== Header ====== */
-.site-header{
+.site-header {
   position: sticky;
   top: 0;
   z-index: 10000;
@@ -64,7 +65,7 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 /* Full width header + comfortable side padding */
-.header-inner{
+.header-inner {
   width: 100%;
   padding-block: 18px;
   padding-inline: 24px; /* lock position */
@@ -75,7 +76,7 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 /* Brand */
-.brand{
+.brand {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
@@ -83,7 +84,7 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 /* Keep logo same size ALWAYS */
-.brand img{
+.brand img {
   width: 189px;
   height: auto;
   max-width: 189px;
@@ -92,13 +93,13 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 /* =========================================
    DESKTOP NAV (dropdowns live here only)
    ========================================= */
-.nav-desktop{
+.nav-desktop {
   display: flex;
   align-items: center;
 }
 
 /* The new desktop structure: <ul class="nav-list"><li class="nav-item">... */
-.nav-list{
+.nav-list {
   list-style: none;
   display: flex;
   align-items: center;
@@ -106,12 +107,12 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 /* Each top-level item */
-.nav-item{
+.nav-item {
   position: relative;
 }
 
 /* Top-level link (H3) */
-.nav-link{
+.nav-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -129,7 +130,7 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 /* Underline for normal desktop items */
-.nav-link::before{
+.nav-link::before {
   content: "";
   position: absolute;
   left: 0;
@@ -144,27 +145,37 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
   transition: transform 260ms ease;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: var(--nav-hover);
   text-shadow: 0 10px 18px rgba(0,0,0,0.12);
 }
 
-.nav-link.active{
+.nav-link.active {
   color: var(--nav-active);
   text-shadow: 0 12px 22px rgba(0,0,0,0.15);
 }
 
 .nav-link:hover::before,
-.nav-link.active::before{
+.nav-link.active::before {
   transform: scaleX(1);
 }
 
+/* Keyboard focus visibility (non-invasive best practice) */
+.nav-link:focus-visible,
+.dropdown-link:focus-visible,
+.footer-nav a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--nav-active);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
 /* Dropdown parents: caret + NO underline */
-.nav-item.has-dropdown > .nav-link::before{
+.nav-item.has-dropdown > .nav-link::before {
   display: none;
 }
 
-.nav-item.has-dropdown > .nav-link::after{
+.nav-item.has-dropdown > .nav-link::after {
   content: "▾";
   font-size: 0.8em;
   transform: translateY(1px);
@@ -172,12 +183,12 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 .nav-item.has-dropdown:hover > .nav-link::after,
-.nav-item.has-dropdown:focus-within > .nav-link::after{
+.nav-item.has-dropdown:focus-within > .nav-link::after {
   transform: translateY(1px) rotate(180deg);
 }
 
 /* Dropdown panel */
-.dropdown{
+.dropdown {
   position: absolute;
   top: calc(100% + 1px);
   left: 50%;
@@ -191,13 +202,19 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
   flex-direction: column;
   gap: 6px;
 
+  /* Hidden state: also not tabbable */
   opacity: 0;
+  visibility: hidden;
   transform: translate(-50%, -8px);
   pointer-events: none;
-  transition: opacity 180ms ease, transform 180ms ease;
+
+  /* Visibility delayed so it hides AFTER fade-out completes */
+  transition: opacity 180ms ease,
+              transform 180ms ease,
+              visibility 0s linear 180ms;
 
   min-width: 220px;
-  max-width: 320px;
+  max-width: min(320px, 90vw);
   width: max-content;
 
   z-index: 20000;
@@ -205,14 +222,20 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 
 /* Show dropdown on hover/focus (desktop) */
 .nav-item.has-dropdown:hover .dropdown,
-.nav-item.has-dropdown:focus-within .dropdown{
+.nav-item.has-dropdown:focus-within .dropdown {
   opacity: 1;
+  visibility: visible;
   transform: translate(-50%, 0);
   pointer-events: auto;
+
+  /* Make visible immediately on open */
+  transition: opacity 180ms ease,
+              transform 180ms ease,
+              visibility 0s;
 }
 
 /* Dropdown links (no underline, just highlight) */
-.dropdown-link{
+.dropdown-link {
   text-decoration: none;
   color: #111;
 
@@ -226,12 +249,12 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
   transition: color 200ms ease, background 200ms ease;
 }
 
-.dropdown-link:hover{
+.dropdown-link:hover {
   color: var(--nav-hover);
   background: rgba(161, 120, 215, 0.12);
 }
 
-.dropdown-link.active{
+.dropdown-link.active {
   color: var(--nav-active);
   background: rgba(138, 56, 245, 0.10);
   font-weight: var(--fw-semibold);
@@ -242,7 +265,7 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
    ----------------------------------------- */
 
 /* Mobile menu links keep underline animation (as before) */
-.nav-mobile a{
+.nav-mobile a {
   white-space: nowrap;          /* prevents “За мен” splitting */
   text-decoration: none;
   color: #111;
@@ -253,10 +276,15 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 
   transition: color 260ms ease, text-shadow 260ms ease;
   position: relative;
+
+  /* Make links only as wide as the text (no full-width boxes) */
+  width: fit-content;
+  display: inline-block;
+  padding: 6px 10px;
 }
 
 /* Underline that animates in/out (mobile only) */
-.nav-mobile a::after{
+.nav-mobile a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -271,23 +299,23 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
   transition: transform 260ms ease;
 }
 
-.nav-mobile a:hover{
+.nav-mobile a:hover {
   color: var(--nav-hover);
   text-shadow: 0 10px 18px rgba(0,0,0,0.12);
 }
 
-.nav-mobile a.active{
+.nav-mobile a.active {
   color: var(--nav-active);
   text-shadow: 0 12px 22px rgba(0,0,0,0.15);
 }
 
 .nav-mobile a:hover::after,
-.nav-mobile a.active::after{
+.nav-mobile a.active::after {
   transform: scaleX(1);
 }
 
 /* ====== Hamburger (more stable on iOS) ====== */
-.hamburger{
+.hamburger {
   display: none;
   position: relative;
   width: 48px;
@@ -300,7 +328,7 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 /* Hamburger lines */
-.hamburger .bar{
+.hamburger .bar {
   position: absolute;
   left: 10px;
   right: 10px;
@@ -316,24 +344,24 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
 }
 
 /* 3 lines */
-.hamburger .bar:nth-child(1){ transform: translateY(calc(-50% - 9px)); }
-.hamburger .bar:nth-child(2){ transform: translateY(-50%); }
-.hamburger .bar:nth-child(3){ transform: translateY(calc(-50% + 9px)); }
+.hamburger .bar:nth-child(1) { transform: translateY(calc(-50% - 9px)); }
+.hamburger .bar:nth-child(2) { transform: translateY(-50%); }
+.hamburger .bar:nth-child(3) { transform: translateY(calc(-50% + 9px)); }
 
 /* Turn into X using the SAME lines */
-.hamburger.is-active .bar:nth-child(1){
+.hamburger.is-active .bar:nth-child(1) {
   transform: translateY(-50%) rotate(45deg);
 }
-.hamburger.is-active .bar:nth-child(2){
+.hamburger.is-active .bar:nth-child(2) {
   opacity: 0;
   transform: translateY(-50%) scaleX(0); /* avoids iOS “ghost pixels” */
 }
-.hamburger.is-active .bar:nth-child(3){
+.hamburger.is-active .bar:nth-child(3) {
   transform: translateY(-50%) rotate(-45deg);
 }
 
 /* ====== Mobile full-screen menu (no duplicated logo) ====== */
-.mobile-overlay{
+.mobile-overlay {
   position: fixed;
   inset: 0;
   background: #fff;              /* not transparent */
@@ -349,12 +377,12 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
   display: flex;
 }
 
-.mobile-overlay.open{
+.mobile-overlay.open {
   transform: translateX(0);
 }
 
 /* Center nav items for better UX */
-.nav-mobile{
+.nav-mobile {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -364,22 +392,15 @@ h5{ font-size: var(--fs-h5); font-weight: var(--fw-bold); line-height: normal; }
   text-align: center;
 }
 
-/* Make links only as wide as the text (no full-width boxes) */
-.nav-mobile a{
-  width: fit-content;
-  display: inline-block;
-  padding: 6px 10px;
-}
-
 /* Prevent scrolling when menu open */
-body.no-scroll{
+body.no-scroll {
   overflow: hidden;
 }
 
 /* ====== Button (H5 per your Figma) ====== */
-.btn{
+.btn {
   display: inline-block;
-  background: var(--btn-default);
+  background-color: var(--btn-default);
   color: #fff;
   border: none;
   border-radius: 15px;
@@ -392,28 +413,29 @@ body.no-scroll{
   cursor: pointer;
   box-shadow: 0 6px 14px rgba(0,0,0,0.10);
 
+  /* Transition matches the property being changed (background-color) */
   transition: background-color 300ms ease-in,
               transform        300ms ease-in,
               box-shadow       300ms ease-in;
 }
 
-.btn:hover{
-  background: var(--btn-hover);
+.btn:hover {
+  background-color: var(--btn-hover);
 }
 
-.btn:active{
-  background: var(--btn-pressed);
+.btn:active {
+  background-color: var(--btn-pressed);
   transform: translateY(1px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
-.site-footer{
+.site-footer {
   background: #fff;
   border-top: 1px solid rgba(0,0,0,0.08);
   margin-top: 60px;
 }
 
-.footer-inner{
+.footer-inner {
   width: 100%;
   padding-block: 18px;
   padding-inline: 24px; /* same as header */
@@ -424,19 +446,19 @@ body.no-scroll{
   flex-wrap: wrap;
 }
 
-.footer-copy{
+.footer-copy {
   font-size: var(--fs-body);
   font-weight: var(--fw-light);
   color: rgba(0,0,0,0.75);
 }
 
-.footer-nav{
+.footer-nav {
   display: flex;
   gap: 18px;
   align-items: center;
 }
 
-.footer-nav a{
+.footer-nav a {
   text-decoration: none;
   color: #111;
   font-size: var(--fs-body);
@@ -444,41 +466,50 @@ body.no-scroll{
   transition: color 260ms ease;
 }
 
-.footer-nav a:hover{
+.footer-nav a:hover {
   color: var(--nav-hover);
 }
 
-.footer-nav--small a{
-  font-size: 16px;
+.footer-nav--small a {
+  font-size: 1rem; /* 16px */
   color: rgba(0,0,0,0.65);
 }
 
 /* ====== Breakpoints ====== */
 /* Don’t shrink nav text — switch to hamburger earlier instead */
-@media (max-width: 1300px){
-  .nav-desktop{ display: none; }
-  .hamburger{ display: inline-block; }
+@media (max-width: 1300px) {
+  .nav-desktop { display: none; }
+  .hamburger { display: inline-block; }
 }
 
 /* Landscape phones / very short height */
-@media (max-width: 1200px) and (max-height: 450px){
-  .nav-mobile{
+@media (max-width: 1200px) and (max-height: 450px) {
+  .nav-mobile {
     justify-content: flex-start; /* don’t force centering when height is tight */
     gap: 12px;                   /* less space between items */
     padding-top: 10px;
     padding-bottom: 20px;
   }
 
-  .nav-mobile a{
-    font-size: 20px;             /* slightly smaller than H3 */
+  .nav-mobile a {
+    font-size: 1.25rem;          /* 20px - slightly smaller than H3 */
   }
 }
 
 /* Mobile: stack nicely */
-@media (max-width: 650px){
-  .footer-inner{
+@media (max-width: 650px) {
+  .footer-inner {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
   }
 }
