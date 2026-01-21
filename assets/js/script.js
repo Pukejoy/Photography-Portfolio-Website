@@ -3,8 +3,12 @@
 
   // Must match your CSS breakpoint
   const MQ = matchMedia("(max-width: 1300px)");
-  const HEADER_URL = new URL("/components/header.html", window.location.href);
-  const FOOTER_URL = new URL("/components/footer.html", window.location.href);
+  const scriptSrc = document.currentScript?.src
+    || document.querySelector('script[src*="assets/js/script.js"]')?.src;
+  const scriptUrl = new URL(scriptSrc ?? window.location.href);
+  const siteRootUrl = new URL("../..", scriptUrl);
+  const HEADER_URL = new URL("components/header.html", siteRootUrl);
+  const FOOTER_URL = new URL("components/footer.html", siteRootUrl);
 
   let wantedOpen = false;
 
