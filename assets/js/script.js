@@ -4,6 +4,7 @@
   // Must match your CSS breakpoint
   const MQ = matchMedia("(max-width: 1300px)");
   const HEADER_URL = new URL("/components/header.html", window.location.href);
+  const FOOTER_URL = new URL("/components/footer.html", window.location.href);
 
   let wantedOpen = false;
 
@@ -105,9 +106,26 @@
     }
   }
 
-  loadHeader();
-})();
+  async function loadFooter() {
+    const slot = $("#footer-slot");
+    if (!slot) return;
 
-// Footer year (safe on all pages)
-const y = document.querySelector("#year");
-if (y) y.textContent = new Date().getFullYear();
+    try {
+      const res = await fetch(FOOTER_URL, { cache: "no-cache" });
+      if (!res.ok) throw new Error(`Footer fetch failed: ${res.status}`);
+
+      slot.innerHTML = await res.text();
+
+      // Footer year (safe on all pages that include the footer slot)
+      const y = $("#year", slot);
+      if (y) y.textContent = new Date().getFullYear();
+    } catch (err) {
+      console.error(err);
+      // Fail gracefully
+      slot.innerHTML = "";
+    }
+  }
+
+  loadHeader();
+  loadFooter();
+})();
