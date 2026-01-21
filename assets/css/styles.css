@@ -582,9 +582,6 @@ body.no-scroll {
   margin-bottom: 12px;
 }
 
-/* Allows using .btn on <a> without underlines */
-.page-404 .btn { text-decoration: none; }
-
 .page-404 .error-hint {
   font-size: 1rem;
   color: rgba(0,0,0,0.65);
