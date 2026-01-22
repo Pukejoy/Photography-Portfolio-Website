@@ -130,79 +130,50 @@
     }
   }
 
-  /* =========================
-     FAQ page logic (safe-run)
-     ========================= */
-function initFaq() {
-  const search = $("#faq-search-input");
-  const empty = $("#faq-empty");
+  // ====== Recommendations filter (NEW) ======
+  function initRecommendationsFilter() {
+    const page = document.querySelector(".page-recs");
+    if (!page) return;
 
-  const groups = $$(".faq-group");        // category sections
-  const items = $$(".faq-item");          // each <details>
+    const toolbar = page.querySelector(".recs-toolbar");
+    const buttons = toolbar ? Array.from(toolbar.querySelectorAll("[data-filter]")) : [];
+    const cards = Array.from(page.querySelectorAll(".rec-card[data-cat]"));
+    const empty = page.querySelector(".recs-empty");
 
-  // Not the FAQ page (or markup not present) => do nothing
-  if (!search || !empty || groups.length === 0 || items.length === 0) return;
+    if (!toolbar || buttons.length === 0 || cards.length === 0) return;
 
-  // Accordion: keep only one open at a time (nice UX)
-  items.forEach((d) => {
-    d.addEventListener("toggle", () => {
-      if (!d.open) return;
-      items.forEach((other) => {
-        if (other !== d) other.open = false;
-      });
-    });
-  });
+    const setActive = (btn) => {
+      buttons.forEach(b => b.classList.toggle("is-active", b === btn));
+    };
 
-  const normalize = (s) => (s || "").toLowerCase().trim();
+    const apply = (filter) => {
+      let visibleCount = 0;
 
-  function filter() {
-    const q = normalize(search.value);
-    let totalShown = 0;
+      cards.forEach(card => {
+        const cats = (card.dataset.cat || "").trim().split(/\s+/).filter(Boolean);
+        const show = filter === "all" || cats.includes(filter);
 
-    // No query => show everything
-    if (!q) {
-      groups.forEach((g) => (g.style.display = ""));
-      items.forEach((d) => (d.style.display = ""));
-      empty.hidden = true;
-      return;
-    }
-
-    // Query present => filter items, then hide empty groups
-    groups.forEach((group) => {
-      const groupItems = $$(".faq-item", group);
-      let groupShown = 0;
-
-      groupItems.forEach((d) => {
-        const text = normalize(d.innerText);
-        const match = text.includes(q);
-
-        d.style.display = match ? "" : "none";
-        if (!match) d.open = false; // avoid open hidden items
-
-        if (match) groupShown++;
+        card.hidden = !show;
+        if (show) visibleCount++;
       });
 
-      // If the category has 0 matching questions, hide it
-      group.style.display = groupShown > 0 ? "" : "none";
+      if (empty) empty.hidden = visibleCount !== 0;
+    };
 
-      totalShown += groupShown;
+    const defaultBtn = buttons.find(b => b.classList.contains("is-active")) || buttons[0];
+    setActive(defaultBtn);
+    apply(defaultBtn.dataset.filter);
+
+    toolbar.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-filter]");
+      if (!btn) return;
+
+      setActive(btn);
+      apply(btn.dataset.filter);
     });
-
-    empty.hidden = totalShown !== 0;
   }
-
-  // Live filtering
-  search.addEventListener("input", filter);
-
-  // Optional: run once in case the browser autofills the input
-  filter();
-}
 
   loadHeader();
   loadFooter();
-
-  // Run page-specific logic after DOM is ready
-  document.addEventListener("DOMContentLoaded", () => {
-    initFaq();
-  });
+  initRecommendationsFilter();
 })();

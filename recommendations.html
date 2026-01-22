@@ -1,4 +1,3 @@
-<!-- recommendations.html -->
 <!doctype html>
 <html lang="bg">
 <head>
@@ -29,20 +28,20 @@
         <!-- LEFT -->
         <div class="recs-main">
           <div class="recs-toolbar" role="group" aria-label="Филтър по тип снимане">
-            <!-- Super simple “filters” (no JS) -->
-            <span class="recs-chip is-active">Всички</span>
-            <span class="recs-chip">Портрети</span>
-            <span class="recs-chip">Събития</span>
-            <span class="recs-chip">Пътувания</span>
+            <button class="recs-chip is-active" type="button" data-filter="all">Всички</button>
+            <button class="recs-chip" type="button" data-filter="portraits">Портрети</button>
+            <button class="recs-chip" type="button" data-filter="events">Събития</button>
           </div>
+
+          <p class="recs-empty" hidden>Няма отзиви, които да съвпадат с филтъра.</p>
 
           <section class="recs-grid" aria-label="Отзиви">
             <!-- Review 1 -->
-            <article class="rec-card">
+            <article class="rec-card" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Мария П.</h2>
-                  <p class="rec-meta">Портретна фотосесия • София</p>
+                  <p class="rec-meta">Портрети • София</p>
                 </div>
 
                 <div class="rec-rating" aria-label="Оценка: 5 от 5">
@@ -61,7 +60,7 @@
             </article>
 
             <!-- Review 2 -->
-            <article class="rec-card">
+            <article class="rec-card" data-cat="events">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Иван К.</h2>
@@ -84,11 +83,11 @@
             </article>
 
             <!-- Review 3 -->
-            <article class="rec-card">
+            <article class="rec-card" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Надежда С.</h2>
-                  <p class="rec-meta">Пътуване • Варна</p>
+                  <p class="rec-meta">Портрети • Варна</p>
                 </div>
 
                 <div class="rec-rating" aria-label="Оценка: 4 от 5">
@@ -107,7 +106,7 @@
             </article>
 
             <!-- Review 4 -->
-            <article class="rec-card">
+            <article class="rec-card" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Даниел Г.</h2>
@@ -147,6 +146,7 @@
                 <span class="star is-on" aria-hidden="true">★</span>
               </div>
             </div>
+            <p class="recs-side-text">*примерни стойности — смени ги с реалните.</p>
           </div>
 
           <div class="recs-side-box">

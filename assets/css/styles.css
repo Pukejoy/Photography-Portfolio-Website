@@ -1718,7 +1718,11 @@ body.no-scroll {
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
+/* Chips are BUTTONS now */
 .page-recs .recs-chip {
+  appearance: none;
+  -webkit-appearance: none;
+
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1731,13 +1735,28 @@ body.no-scroll {
   font-size: 1rem;
   font-weight: var(--fw-semibold);
   color: rgba(0,0,0,0.75);
+
   user-select: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .page-recs .recs-chip.is-active {
   color: #111;
   border-color: rgba(138,56,245,0.25);
   box-shadow: 0 10px 18px rgba(0,0,0,0.06);
+}
+
+.page-recs .recs-chip:focus-visible {
+  outline: 3px solid var(--nav-active);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.page-recs .recs-empty {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: rgba(0,0,0,0.65);
 }
 
 .page-recs .recs-grid {
@@ -1872,46 +1891,6 @@ body.no-scroll {
   .page-recs .recs-grid { grid-template-columns: 1fr; }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .page-gear .gear-content { grid-template-columns: 1fr; }
-  .page-gear .gear-grid { grid-template-columns: 1fr; }
-}
-
-/* Responsive stack */
-@media (max-width: 900px) {
-  .page-faq .faq-content { grid-template-columns: 1fr; }
-}
-
-/* Tablet & mobile: stack */
-@media (max-width: 900px) {
-  .page-contact .contact-content { grid-template-columns: 1fr; }
-  .page-contact .contact-form { grid-template-columns: 1fr; }
-}
-
-/* Short screens (common laptop 1366x768): tighten a bit more */
-@media (min-width: 901px) and (max-height: 780px) {
-  .page-contact .contact-page { padding: 10px; }
-  .page-contact .contact-wrap { padding: 14px; }
-  .page-contact .contact-head { margin-bottom: 8px; }
-  .page-contact textarea { min-height: 96px; }
-  .page-contact .contact-form { padding: 12px; gap: 10px; }
-}
-
-/* Mobile: single column + tighter typography rows */
-@media (max-width: 900px) {
-  .page-styleguide .sg-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-styleguide .sg-row {
-    grid-template-columns: 60px 1fr;
-  }
-
-  .page-styleguide .sg-swatches {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* Mobile: single column */
 @media (max-width: 800px) {
