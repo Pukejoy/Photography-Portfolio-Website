@@ -3,139 +3,92 @@
   if (!form) return;
 
   const TO_EMAIL = "contacts@nikolaykesov.com";
+  const $ = (sel) => form.querySelector(sel);
+  const byId = (id) => document.getElementById(id);
 
-  const els = {
-    name: form.querySelector("#cf-name"),
-    email: form.querySelector("#cf-email"),
-    phone: form.querySelector("#cf-phone"),
-    topic: form.querySelector("#cf-topic"),
-    message: form.querySelector("#cf-message"),
-    status: document.getElementById("form-status"),
-    err: {
-      name: document.getElementById("cf-name-error"),
-      email: document.getElementById("cf-email-error"),
-      phone: document.getElementById("cf-phone-error"),
-      topic: document.getElementById("cf-topic-error"),
-      message: document.getElementById("cf-message-error"),
-    }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const phoneOk = (v) => {
+    if (!v) return true; // optional
+    if (!/^[+\d\s().-]+$/.test(v)) return false;
+    return (v.match(/\d/g) || []).length >= 7;
   };
 
-  function setInvalid(inputEl, errorEl, msg) {
-    inputEl.classList.add("is-invalid");
-    inputEl.setAttribute("aria-invalid", "true");
-    errorEl.textContent = msg;
-  }
+  const fields = [
+    { key: "name",    el: $("#cf-name"),    err: byId("cf-name-error"),    req: true,
+      test: (v) => v.length >= 3, msg: "Моля, въведете име." },
 
-  function clearInvalid(inputEl, errorEl) {
-    inputEl.classList.remove("is-invalid");
-    inputEl.removeAttribute("aria-invalid");
-    errorEl.textContent = "";
-  }
+    { key: "email",   el: $("#cf-email"),   err: byId("cf-email-error"),   req: true,
+      test: (v) => emailRe.test(v), msg: "Моля, въведете валиден имейл." },
 
-  function isValidEmail(v) {
-    const email = v.trim();
-    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-  }
+    { key: "phone",   el: $("#cf-phone"),   err: byId("cf-phone-error"),   req: false,
+      test: phoneOk, msg: "Невалиден телефон (или оставете празно)." },
 
-  function isValidPhone(v) {
-    const p = v.trim();
-    if (!p) return true; // optional
-    if (!/^[+\d\s().-]+$/.test(p)) return false;
-    const digits = (p.match(/\d/g) || []).length;
-    return digits >= 7;
-  }
+    { key: "topic",   el: $("#cf-topic"),   err: byId("cf-topic-error"),   req: true,
+      test: (v) => !!v, msg: "Моля, изберете тема." },
 
-  function validateField(field, { showEmpty = false } = {}) {
-    const v = field.value.trim();
+    { key: "message", el: $("#cf-message"), err: byId("cf-message-error"), req: true,
+      test: (v) => v.length >= 10, msg: "Съобщението трябва да е поне 10 символа." },
+  ];
 
-    if (field === els.name) {
-      if (!v && !showEmpty) { clearInvalid(field, els.err.name); return true; }
-      if (v.length < 3) { setInvalid(field, els.err.name, "Моля, въведете име."); return false; }
-      clearInvalid(field, els.err.name); return true;
-    }
+  const setState = (f, ok) => {
+    f.el.classList.toggle("is-invalid", !ok);
+    f.el.toggleAttribute("aria-invalid", !ok);
+    f.err.textContent = ok ? "" : f.msg;
+  };
 
-    if (field === els.email) {
-      if (!v && !showEmpty) { clearInvalid(field, els.err.email); return true; }
-      if (!isValidEmail(v)) { setInvalid(field, els.err.email, "Моля, въведете валиден имейл."); return false; }
-      clearInvalid(field, els.err.email); return true;
-    }
-
-    if (field === els.phone) {
-      if (!v) { clearInvalid(field, els.err.phone); return true; }
-      if (!isValidPhone(v)) { setInvalid(field, els.err.phone, "Невалиден телефон (или оставете празно)."); return false; }
-      clearInvalid(field, els.err.phone); return true;
-    }
-
-    if (field === els.topic) {
-      if (!v && !showEmpty) { clearInvalid(field, els.err.topic); return true; }
-      if (!v) { setInvalid(field, els.err.topic, "Моля, изберете тема."); return false; }
-      clearInvalid(field, els.err.topic); return true;
-    }
-
-    if (field === els.message) {
-      if (!v && !showEmpty) { clearInvalid(field, els.err.message); return true; }
-      if (v.length < 10) { setInvalid(field, els.err.message, "Съобщението трябва да е поне 10 символа."); return false; }
-      clearInvalid(field, els.err.message); return true;
-    }
-
-    return true;
-  }
-
-  function validateAll({ focusFirstBad = false } = {}) {
-    let ok = true;
-    let firstBad = null;
-
-    [els.name, els.email, els.phone, els.topic, els.message].forEach((field) => {
-      const required = (field === els.name || field === els.email || field === els.topic || field === els.message);
-      const valid = validateField(field, { showEmpty: required });
-      if (!valid) {
-        ok = false;
-        if (!firstBad) firstBad = field;
-      }
-    });
-
-    if (!ok && focusFirstBad && firstBad) firstBad.focus?.();
+  const validate = (f, showEmpty = false) => {
+    const v = f.el.value.trim();
+    if (!v && !showEmpty) return setState(f, true), true;
+    const ok = f.test(v);
+    setState(f, ok);
     return ok;
+  };
+
+const validateAll = ({ focusFirstBad = true } = {}) => {
+  let ok = true;
+  let firstBad = null;
+
+  for (const f of fields) {
+    const valid = validate(f, f.req); // required fields show empty errors on submit
+    if (!valid) {
+      ok = false;
+      if (!firstBad) firstBad = f.el;
+    }
   }
 
-  function buildMailto() {
-    const name = els.name.value.trim();
-    const email = els.email.value.trim();
-    const phone = els.phone.value.trim();
-    const topic = els.topic.value.trim();
-    const message = els.message.value.trim();
+  if (!ok && focusFirstBad) firstBad?.focus?.();
+  return ok;
+};
+
+  const get = (key) => fields.find((f) => f.key === key).el.value.trim();
+
+  const buildMailto = () => {
+    const name = get("name");
+    const email = get("email");
+    const phone = get("phone");
+    const topic = get("topic");
+    const message = get("message");
 
     const subject = `${topic} — ${name}`;
-
-    // CRLF line breaks for better compatibility in some mail clients
     const body = [
       `Име: ${name}`,
       `Имейл: ${email}`,
       `Телефон: ${phone || "-"}`,
       "",
       "Съобщение:",
-      message
+      message,
     ].join("\r\n");
 
-    return `mailto:${encodeURIComponent(TO_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }
+    return `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
-  // ✅ Immediate feedback without focus trap:
-  // - validate only the field that was edited
-  [els.name, els.email, els.phone, els.topic, els.message].forEach((field) => {
-    field.addEventListener("blur", () => validateField(field, { showEmpty: false }));
-    field.addEventListener("input", () => {
-      // Clear red state as soon as it becomes valid
-      validateField(field, { showEmpty: false });
-    });
+  fields.forEach((f) => {
+    f.el.addEventListener("blur",  () => validate(f, false));
+    f.el.addEventListener("input", () => validate(f, false));
   });
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const ok = validateAll({ focusFirstBad: true });
-    if (!ok) return;
-
-    window.location.href = buildMailto();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (validateAll({ focusFirstBad: true })) window.location.href = buildMailto();
   });
 })();
