@@ -2131,21 +2131,105 @@ body.no-scroll {
   text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .page-about .about-content { grid-template-columns: 1fr; }
+/* =====================================================================
+   RESPONSIVE (Pages)
+   - Collapses 2-column layouts into 1 column
+   - Fixes tiny/squeezed form fields on mobile
+   ===================================================================== */
+
+/* Tablets + smaller: collapse the 2-column page layouts */
+@media (max-width: 980px) {
+  .page-contact .contact-content,
+  .page-faq .faq-content,
+  .page-gear .gear-content,
+  .page-recs .recs-content,
+  .page-about .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  /* CONTACTS: form should NOT stay 2 columns on narrow screens */
+  .page-contact .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  /* ABOUT: keep your intended behavior */
   .page-about .about-grid { grid-template-columns: 1fr; }
   .page-about .about-profile { grid-template-columns: 1fr; }
+}
+
+/* Phones: turn internal grids into 1 column + better button layout */
+@media (max-width: 720px) {
+  .page-gear .gear-grid,
+  .page-gear .gear-grid--soft,
+  .page-recs .recs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CONTACTS: stack actions + make button full width */
+  .page-contact .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .page-contact .form-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ABOUT: slightly smaller avatar when stacked */
   .page-about .about-avatar { width: 100px; height: 100px; }
 }
 
+/* Small phones: tighten padding so cards don’t feel cramped */
+@media (max-width: 520px) {
+  .page-contact .contact-page,
+  .page-faq .faq-page,
+  .page-gear .gear-page,
+  .page-recs .recs-page,
+  .page-about .about-page {
+    padding: 12px;
+  }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .page-recs .recs-content { grid-template-columns: 1fr; }
-  .page-recs .recs-grid { grid-template-columns: 1fr; }
+  .page-contact .contact-wrap,
+  .page-faq .faq-wrap,
+  .page-gear .gear-wrap,
+  .page-recs .recs-wrap,
+  .page-about .about-wrap {
+    padding: 14px;
+  }
+
+  .page-contact .contact-form,
+  .page-faq .faq-main,
+  .page-gear .gear-main,
+  .page-recs .recs-main {
+    padding: 12px;
+  }
+
+  /* Avoid “super tall” textarea while still usable */
+  .page-contact textarea {
+    min-height: 120px;
+  }
+
+  /* Prevent weird overflow in inputs/selects on very small widths */
+  .page-contact input,
+  .page-contact select,
+  .page-contact textarea,
+  .page-faq .faq-search input {
+    min-width: 0;
+  }
+
+  /* Optional: keep logo from dominating tiny screens */
+  .brand img {
+    width: 160px;
+    max-width: 160px;
+  }
+
+  /* Slightly tighter header padding on tiny screens (keeps your header margin-top intact) */
+  .header-inner {
+    padding-inline: 16px;
+  }
 }
-
 
 /* Mobile: single column */
 @media (max-width: 800px) {
