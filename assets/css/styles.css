@@ -1394,6 +1394,257 @@ body.no-scroll {
   color: rgba(0,0,0,0.65);
 }
 
+/* ====== Gear Page (matches Contacts/FAQ layout) ====== */
+.page-gear {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-gear .gear-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(10px, 1.8vw, 18px);
+}
+
+.page-gear .gear-wrap {
+  width: min(1100px, 100%);
+  padding: clamp(14px, 2.6vw, 22px);
+  border-radius: clamp(18px, 3vw, 22px);
+
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.page-gear .gear-wrap::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--nav-active), var(--nav-hover));
+  opacity: 0.7;
+}
+
+.page-gear .gear-head {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.page-gear .gear-title {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-black);
+  margin-bottom: 4px;
+}
+
+.page-gear .gear-subtitle {
+  font-size: var(--fs-body);
+  color: rgba(0,0,0,0.70);
+}
+
+.page-gear .gear-content {
+  display: grid;
+  grid-template-columns: 1.45fr 0.85fr;
+  gap: 14px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+/* Left */
+.page-gear .gear-main {
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 14px;
+  background: #fff;
+}
+
+.page-gear .gear-group {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.page-gear .gear-group:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.page-gear .gear-group-title {
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-bold);
+  margin-bottom: 10px;
+}
+
+.page-gear .gear-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.page-gear .gear-grid--soft {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.page-gear .gear-card {
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(0,0,0,0.02);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.page-gear .gear-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0,0,0,0.08);
+}
+
+/* Image holder (your images are 800x800) */
+.page-gear .gear-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #fff;
+
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+  padding: 10px; /* keeps contain-fit images looking tidy */
+}
+
+.page-gear .gear-thumb picture,
+.page-gear .gear-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.page-gear .gear-thumb img {
+  object-fit: contain; /* no cropping */
+}
+
+/* Software “tile” stays (not an icon) */
+.page-gear .gear-thumb--soft {
+  background: linear-gradient(180deg, rgba(138,56,245,0.08), rgba(0,0,0,0.03));
+  padding: 0;
+}
+
+.page-gear .gear-soft {
+  font-weight: var(--fw-black);
+  font-size: 1.4rem;
+  color: rgba(0,0,0,0.72);
+  letter-spacing: -0.02em;
+}
+
+.page-gear .gear-name {
+  font-size: 1.05rem;
+  font-weight: var(--fw-bold);
+  margin-bottom: 6px;
+}
+
+.page-gear .gear-desc {
+  font-size: 1rem;
+  color: rgba(0,0,0,0.70);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.page-gear .gear-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.page-gear .gear-link {
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: var(--fw-semibold);
+  color: var(--nav-active);
+}
+
+.page-gear .gear-link:hover {
+  color: var(--nav-hover);
+  text-decoration: underline;
+}
+
+.page-gear .gear-note {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: rgba(0,0,0,0.60);
+}
+
+/* Right */
+.page-gear .gear-side {
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(0,0,0,0.02);
+  display: grid;
+  gap: 12px;
+}
+
+.page-gear .gear-side-title {
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-bold);
+}
+
+.page-gear .gear-side-box {
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff;
+}
+
+.page-gear .gear-side-h {
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+  margin-bottom: 8px;
+}
+
+.page-gear .gear-side-list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  color: rgba(0,0,0,0.75);
+  font-size: 1rem;
+}
+
+.page-gear .gear-side-list li::before {
+  content: "•";
+  color: var(--nav-active);
+  margin-right: 10px;
+}
+
+.page-gear .gear-side-text {
+  font-size: 1rem;
+  color: rgba(0,0,0,0.65);
+  line-height: 1.35;
+}
+
+.page-gear .gear-side-text code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  background: rgba(0,0,0,0.06);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .page-gear .gear-content { grid-template-columns: 1fr; }
+  .page-gear .gear-grid { grid-template-columns: 1fr; }
+}
+
 /* Responsive stack */
 @media (max-width: 900px) {
   .page-faq .faq-content { grid-template-columns: 1fr; }

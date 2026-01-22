@@ -1,9 +1,11 @@
+<!-- gear.html -->
 <!doctype html>
 <html lang="bg">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nikolay Kesov — Оборудване</title>
+
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
@@ -11,14 +13,148 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-gear">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">Оборудване</h1>
+  <main class="gear-page" aria-labelledby="gear-title">
+    <section class="gear-wrap">
+      <header class="gear-head">
+        <h1 id="gear-title" class="gear-title">Оборудване</h1>
+        <p class="gear-subtitle">
+          С какво снимам и с какво обработвам — за хората, които обичат детайлите.
+        </p>
+      </header>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="gear-content">
+        <!-- LEFT: main -->
+        <div class="gear-main">
+          <!-- Photo gear -->
+          <section class="gear-group" aria-labelledby="gear-photo">
+            <h2 class="gear-group-title" id="gear-photo">Фото техника</h2>
+
+            <div class="gear-grid">
+              <!-- Camera -->
+              <article class="gear-card">
+                <div class="gear-thumb">
+                  <img src="/assets/img/gear/camera.jpg" alt="Canon R6 Mark II (камера)" loading="lazy" decoding="async">
+                </div>
+
+                <h3 class="gear-name">Canon R6 Mark II</h3>
+                <p class="gear-desc">Основното ми тяло — използвам го за портрети, събития и пътувания.</p>
+
+                <div class="gear-links">
+                  <a class="gear-link" href="https://www.canon-europe.com/cameras/eos-r6-mark-ii/" target="_blank" rel="noopener">Официална страница</a>
+                </div>
+              </article>
+
+              <!-- Lens -->
+              <article class="gear-card">
+                <div class="gear-thumb">
+                  <img src="/assets/img/gear/lens.jpg" alt="EF 24-70mm f/2.8L II USM (обектив)" loading="lazy" decoding="async">
+                </div>
+
+                <h3 class="gear-name">EF 24-70mm f/2.8L II USM</h3>
+                <p class="gear-desc">Универсален “работен” обектив — супер удобен за почти всичко.</p>
+
+                <div class="gear-links">
+                  <a class="gear-link" href="https://www.canon.co.uk/lenses/ef-24-70mm-f-2-8l-ii-usm-lens/" target="_blank" rel="noopener">Официална страница</a>
+                </div>
+              </article>
+
+              <!-- Microphone -->
+              <article class="gear-card">
+                <div class="gear-thumb">
+                  <img src="/assets/img/gear/microphone.jpg" alt="RODE VideoMic (микрофон)" loading="lazy" decoding="async">
+                </div>
+
+                <h3 class="gear-name">RODE VideoMic</h3>
+                <p class="gear-desc">Когато снимам видео/събития — за по-чист звук директно в камерата.</p>
+
+                <div class="gear-links">
+                  <a class="gear-link" href="https://rode.com/en-gb/products/videomic" target="_blank" rel="noopener">Официална страница</a>
+                </div>
+              </article>
+
+              <!-- Flash -->
+              <article class="gear-card">
+                <div class="gear-thumb">
+                  <img src="/assets/img/gear/flash.jpg" alt="Canon Speedlite 430EX (светкавица)" loading="lazy" decoding="async">
+                </div>
+
+                <h3 class="gear-name">Canon Speedlite 430EX</h3>
+                <p class="gear-desc">Светкавица за ситуации с по-слаба светлина или когато искам контрол.</p>
+
+                <div class="gear-links">
+                  <a class="gear-link" href="https://www.canon-europe.com/for_home/product_finder/cameras/speedlite_flash/speedlite_430ex_ii/specifications/" target="_blank" rel="noopener">Официална страница</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Editing -->
+          <section class="gear-group" aria-labelledby="gear-edit">
+            <h2 class="gear-group-title" id="gear-edit">Софтуер за обработка</h2>
+
+            <div class="gear-grid gear-grid--soft">
+              <article class="gear-card">
+                <div class="gear-thumb gear-thumb--soft" aria-hidden="true">
+                  <span class="gear-soft">LrC</span>
+                </div>
+
+                <h3 class="gear-name">Adobe Lightroom Classic</h3>
+                <p class="gear-desc">Селекция, цветове, базова обработка и организация на кадрите.</p>
+
+                <div class="gear-links">
+                  <a class="gear-link" href="https://www.adobe.com/products/photoshop-lightroom-classic.html" target="_blank" rel="noopener">Официална страница</a>
+                </div>
+              </article>
+
+              <article class="gear-card">
+                <div class="gear-thumb gear-thumb--soft" aria-hidden="true">
+                  <span class="gear-soft">Ps</span>
+                </div>
+
+                <h3 class="gear-name">Adobe Photoshop</h3>
+                <p class="gear-desc">Детайлен ретуш, корекции, по-сложни манипулации при нужда.</p>
+
+                <div class="gear-links">
+                  <a class="gear-link" href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener">Официална страница</a>
+                </div>
+              </article>
+            </div>
+
+            <p class="gear-note">
+              *Бележка: това е просто “какво използвам” — не означава, че техниката прави снимките вместо теб 🙂
+            </p>
+          </section>
+        </div>
+
+        <!-- RIGHT: sidebar -->
+        <aside class="gear-side" aria-label="Резюме и бърза информация">
+          <h2 class="gear-side-title">Накратко</h2>
+
+          <div class="gear-side-box">
+            <h3 class="gear-side-h">Кит</h3>
+            <ul class="gear-side-list">
+              <li>Canon R6 Mark II</li>
+              <li>EF 24-70mm f/2.8L II USM</li>
+              <li>RODE VideoMic</li>
+              <li>Canon Speedlite 430EX</li>
+            </ul>
+          </div>
+
+          <div class="gear-side-box">
+            <h3 class="gear-side-h">Обработка</h3>
+            <ul class="gear-side-list">
+              <li>Lightroom Classic</li>
+              <li>Photoshop</li>
+            </ul>
+          </div>
+
+          <a class="btn" href="/contacts.html">Въпроси?</a>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <div id="footer-slot"></div>
