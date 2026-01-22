@@ -12,21 +12,21 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body class="page-recs">
+<body class="page-recs page-shell">
   <div id="header-slot"></div>
 
-  <main class="recs-page" aria-labelledby="recs-title">
-    <section class="recs-wrap">
-      <header class="recs-head">
-        <h1 id="recs-title" class="recs-title">Препоръки</h1>
-        <p class="recs-subtitle">
+  <main class="recs-page page-center" aria-labelledby="recs-title">
+    <section class="recs-wrap page-wrap page-wrap--accent">
+      <header class="recs-head panel-head">
+        <h1 id="recs-title" class="recs-title panel-title">Препоръки</h1>
+        <p class="recs-subtitle panel-subtitle">
           Мнения от хора, с които съм работил — преживяване, комуникация и резултат.
         </p>
       </header>
 
-      <div class="recs-content">
+      <div class="recs-content panel-content">
         <!-- LEFT -->
-        <div class="recs-main">
+        <div class="recs-main panel-main">
           <div class="recs-toolbar" role="group" aria-label="Филтър по тип снимане">
             <button class="recs-chip is-active" type="button" data-filter="all">Всички</button>
             <button class="recs-chip" type="button" data-filter="portraits">Портрети</button>
@@ -37,7 +37,7 @@
 
           <section class="recs-grid" aria-label="Отзиви">
             <!-- Review 1 -->
-            <article class="rec-card" data-cat="portraits">
+            <article class="rec-card soft-card soft-card--hover" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Мария П.</h2>
@@ -60,7 +60,7 @@
             </article>
 
             <!-- Review 2 -->
-            <article class="rec-card" data-cat="events">
+            <article class="rec-card soft-card soft-card--hover" data-cat="events">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Иван К.</h2>
@@ -83,7 +83,7 @@
             </article>
 
             <!-- Review 3 -->
-            <article class="rec-card" data-cat="portraits">
+            <article class="rec-card soft-card soft-card--hover" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Надежда С.</h2>
@@ -106,7 +106,7 @@
             </article>
 
             <!-- Review 4 -->
-            <article class="rec-card" data-cat="portraits">
+            <article class="rec-card soft-card soft-card--hover" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Даниел Г.</h2>
@@ -131,11 +131,11 @@
         </div>
 
         <!-- RIGHT -->
-        <aside class="recs-side" aria-label="Обобщение и контакт">
-          <h2 class="recs-side-title">Обобщение</h2>
+        <aside class="recs-side panel-side" aria-label="Обобщение и контакт">
+          <h2 class="recs-side-title panel-side-title">Обобщение</h2>
 
-          <div class="recs-side-box">
-            <h3 class="recs-side-h">Средна оценка</h3>
+          <div class="recs-side-box panel-side-box">
+            <h3 class="recs-side-h panel-side-h">Средна оценка</h3>
             <div class="recs-avg">
               <span class="recs-avg-num">4.9</span>
               <div class="recs-avg-stars" aria-label="Средно: 5 от 5">
@@ -146,12 +146,12 @@
                 <span class="star is-on" aria-hidden="true">★</span>
               </div>
             </div>
-            <p class="recs-side-text">*примерни стойности — смени ги с реалните.</p>
+            <p class="recs-side-text panel-side-text">*примерни стойности — смени ги с реалните.</p>
           </div>
 
-          <div class="recs-side-box">
-            <h3 class="recs-side-h">Какво ценят хората</h3>
-            <ul class="recs-side-list">
+          <div class="recs-side-box panel-side-box">
+            <h3 class="recs-side-h panel-side-h">Какво ценят хората</h3>
+            <ul class="recs-side-list bullet-list">
               <li>Бърза комуникация</li>
               <li>Спокойна атмосфера</li>
               <li>Естествени кадри</li>
@@ -159,9 +159,9 @@
             </ul>
           </div>
 
-          <div class="recs-side-box">
-            <h3 class="recs-side-h">Искаш да оставиш мнение?</h3>
-            <p class="recs-side-text">
+          <div class="recs-side-box panel-side-box">
+            <h3 class="recs-side-h panel-side-h">Искаш да оставиш мнение?</h3>
+            <p class="recs-side-text panel-side-text">
               Пиши ми през Контакти и ми кажи накратко как е минала фотосесията — ще го добавя тук.
             </p>
           </div>
