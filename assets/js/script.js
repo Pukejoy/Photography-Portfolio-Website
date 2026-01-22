@@ -130,6 +130,79 @@
     }
   }
 
+  /* =========================
+     FAQ page logic (safe-run)
+     ========================= */
+function initFaq() {
+  const search = $("#faq-search-input");
+  const empty = $("#faq-empty");
+
+  const groups = $$(".faq-group");        // category sections
+  const items = $$(".faq-item");          // each <details>
+
+  // Not the FAQ page (or markup not present) => do nothing
+  if (!search || !empty || groups.length === 0 || items.length === 0) return;
+
+  // Accordion: keep only one open at a time (nice UX)
+  items.forEach((d) => {
+    d.addEventListener("toggle", () => {
+      if (!d.open) return;
+      items.forEach((other) => {
+        if (other !== d) other.open = false;
+      });
+    });
+  });
+
+  const normalize = (s) => (s || "").toLowerCase().trim();
+
+  function filter() {
+    const q = normalize(search.value);
+    let totalShown = 0;
+
+    // No query => show everything
+    if (!q) {
+      groups.forEach((g) => (g.style.display = ""));
+      items.forEach((d) => (d.style.display = ""));
+      empty.hidden = true;
+      return;
+    }
+
+    // Query present => filter items, then hide empty groups
+    groups.forEach((group) => {
+      const groupItems = $$(".faq-item", group);
+      let groupShown = 0;
+
+      groupItems.forEach((d) => {
+        const text = normalize(d.innerText);
+        const match = text.includes(q);
+
+        d.style.display = match ? "" : "none";
+        if (!match) d.open = false; // avoid open hidden items
+
+        if (match) groupShown++;
+      });
+
+      // If the category has 0 matching questions, hide it
+      group.style.display = groupShown > 0 ? "" : "none";
+
+      totalShown += groupShown;
+    });
+
+    empty.hidden = totalShown !== 0;
+  }
+
+  // Live filtering
+  search.addEventListener("input", filter);
+
+  // Optional: run once in case the browser autofills the input
+  filter();
+}
+
   loadHeader();
   loadFooter();
+
+  // Run page-specific logic after DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    initFaq();
+  });
 })();

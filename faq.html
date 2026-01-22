@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nikolay Kesov — ЧЗВ</title>
+
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
@@ -11,14 +12,178 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-faq">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">ЧЗВ</h1>
+  <main class="faq-page" aria-labelledby="faq-title">
+    <section class="faq-wrap">
+      <header class="faq-head">
+        <h1 id="faq-title" class="faq-title">ЧЗВ</h1>
+        <p class="faq-subtitle">
+          Най-честите въпроси за фотосесии, обработка, срокове и лицензиране.
+        </p>
+      </header>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="faq-content">
+        <!-- LEFT: FAQ main -->
+        <div class="faq-main">
+          <!-- Search (uses same "field box" look as Contacts) -->
+          <div class="faq-search">
+            <label for="faq-search-input">Търсене</label>
+            <input
+              id="faq-search-input"
+              type="text"
+              placeholder="Напр. „срок“, „цена“, „RAW“, „лиценз“…"
+              autocomplete="off"
+            />
+            <p class="faq-search-hint">Показва въпроси, които съдържат търсената дума/фраза.</p>
+          </div>
+
+          <p class="faq-empty" id="faq-empty" hidden>Няма резултати. Опитай с друга дума.</p>
+
+          <!-- GROUP: Booking -->
+          <section class="faq-group" aria-labelledby="faq-booking">
+            <h2 class="faq-group-title" id="faq-booking">Записване</h2>
+
+            <details class="faq-item">
+              <summary class="faq-q">Как да се запиша за фотосесия?</summary>
+              <div class="faq-a">
+                <p>Най-лесно е през страницата <a href="/contacts.html">Контакти</a>. Напиши дата/град и какъв тип сесия искаш (портрети, събитие и т.н.).</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Колко по-рано трябва да запазя час?</summary>
+              <div class="faq-a">
+                <p>Препоръчително е поне 1–2 седмици предварително. За събития (бал, кръщене, рожден ден) — колкото по-рано, толкова по-добре.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Правиш ли фотосесии извън моя град?</summary>
+              <div class="faq-a">
+                <p>Да, възможно е. Пиши ми къде и кога, за да уточним транспорт/разходи и логистика.</p>
+              </div>
+            </details>
+          </section>
+
+          <!-- GROUP: Pricing -->
+          <section class="faq-group" aria-labelledby="faq-pricing">
+            <h2 class="faq-group-title" id="faq-pricing">Цени и пакети</h2>
+
+            <details class="faq-item">
+              <summary class="faq-q">Как се формира цената?</summary>
+              <div class="faq-a">
+                <p>Зависи от типа снимане (портрети/събитие), продължителност, локация, брой обработени кадри и допълнителни изисквания.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Има ли капаро?</summary>
+              <div class="faq-a">
+                <p>Понякога да — най-вече за по-дълги/ангажиращи дати (събития). Уточняваме го предварително.</p>
+              </div>
+            </details>
+          </section>
+
+          <!-- GROUP: Delivery -->
+          <section class="faq-group" aria-labelledby="faq-delivery">
+            <h2 class="faq-group-title" id="faq-delivery">Получаване и обработка</h2>
+
+            <details class="faq-item">
+              <summary class="faq-q">Колко време отнема обработката?</summary>
+              <div class="faq-a">
+                <p>Обикновено 3–10 дни според натовареност и обем. За събития може да е повече. Ако имаш краен срок, кажи предварително.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Как получавам снимките?</summary>
+              <div class="faq-a">
+                <p>Най-често чрез линк за сваляне (онлайн албум/папка). Можем да уточним и друг вариант, ако е нужно.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Даваш ли RAW файловете?</summary>
+              <div class="faq-a">
+                <p>По принцип — не, защото RAW е “работен” формат. Ако имаш конкретна причина, можем да го обсъдим отделно.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Мога ли да избера кои снимки да се обработят?</summary>
+              <div class="faq-a">
+                <p>Да. В повечето случаи изпращам подбор/галерия за избор и след това обработвам избраните кадри.</p>
+              </div>
+            </details>
+          </section>
+
+          <!-- GROUP: Rights -->
+          <section class="faq-group" aria-labelledby="faq-rights">
+            <h2 class="faq-group-title" id="faq-rights">Права и лиценз</h2>
+
+            <details class="faq-item">
+              <summary class="faq-q">Мога ли да използвам снимките за комерсиални цели?</summary>
+              <div class="faq-a">
+                <p>За комерсиална употреба (реклама, бранд, продукт) обикновено се прави отделно уточнение/лиценз. Пиши ми детайли и ще го уточним.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Публикуваш ли снимките в портфолиото си?</summary>
+              <div class="faq-a">
+                <p>Само ако ти е ок. Ако предпочиташ да не се публикуват — казваш предварително и го спазвам.</p>
+              </div>
+            </details>
+          </section>
+
+          <!-- GROUP: Changes -->
+          <section class="faq-group" aria-labelledby="faq-changes">
+            <h2 class="faq-group-title" id="faq-changes">Промени и отказ</h2>
+
+            <details class="faq-item">
+              <summary class="faq-q">Какво става ако времето е лошо (за външна сесия)?</summary>
+              <div class="faq-a">
+                <p>Уговаряме резервна дата или алтернативна локация на закрито.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">Мога ли да отменя или променя датата?</summary>
+              <div class="faq-a">
+                <p>Да. Най-добре е да ми пишеш възможно най-рано, за да намерим нова дата и да няма конфликт с други ангажименти.</p>
+              </div>
+            </details>
+          </section>
+        </div>
+
+        <!-- RIGHT: Sidebar (same vibe as Contacts right column) -->
+        <aside class="faq-side" aria-label="Помощ и контакти">
+          <h2 class="faq-side-title">Не намираш отговора?</h2>
+
+          <p class="faq-side-text">
+            Пиши ми през Контакти и опиши накратко какво ти трябва — ще отговоря възможно най-бързо.
+          </p>
+
+          <a class="btn" href="/contacts.html">Към Контакти</a>
+
+          <div class="faq-side-box">
+            <h3 class="faq-side-h">Полезно</h3>
+            <ul class="faq-side-list">
+              <li>Добави дата + град</li>
+              <li>Тип снимане (портрет/събитие)</li>
+              <li>Примерен стил (ако имаш)</li>
+            </ul>
+          </div>
+
+          <div class="faq-side-box">
+            <h3 class="faq-side-h">Отговор</h3>
+            <p class="faq-side-text-sm">Обикновено до 24–48 часа.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <div id="footer-slot"></div>
