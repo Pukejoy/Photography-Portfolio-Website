@@ -1296,7 +1296,7 @@ body.no-scroll {
 .page-faq .faq-q {
   list-style: none;
   cursor: pointer;
-  padding: 12px 12px;
+  padding: 12px;
 
   font-size: 1rem;
   font-weight: var(--fw-semibold);
