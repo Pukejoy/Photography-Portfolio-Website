@@ -2,7 +2,7 @@
   const form = document.getElementById("contact-form");
   if (!form) return;
 
-  const TO_EMAIL = "contact@nikolaykesov.com";
+  const TO_EMAIL = "contacts@nikolaykesov.com";
 
   const els = {
     name: form.querySelector("#cf-name"),
