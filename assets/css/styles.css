@@ -3093,11 +3093,21 @@ body.no-scroll {
   text-decoration: underline;
 }
 
-/* Hub tiles */
+/* =========================
+   HUB TILES (restore old look)
+   ========================= */
 .page-galleries .albums-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .page-galleries .albums-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .page-galleries .albums-grid { grid-template-columns: 1fr; }
 }
 
 .page-galleries .album-card {
@@ -3162,7 +3172,9 @@ body.no-scroll {
   text-decoration: underline;
 }
 
-/* Gallery grid (subpages) */
+/* =========================
+   Subpages: Gallery toolbar + masonry grid
+   ========================= */
 .page-galleries .gallery-toolbar {
   padding-bottom: 12px;
   margin-bottom: 12px;
@@ -3184,7 +3196,7 @@ body.no-scroll {
   color: rgba(0,0,0,0.55);
 }
 
-/* Gallery grid (subpages) — masonry columns so portrait + landscape both look right */
+/* Masonry columns so portrait + landscape both look right */
 .page-galleries .gallery-grid {
   column-count: 3;
   column-gap: 10px;
@@ -3204,14 +3216,14 @@ body.no-scroll {
   margin: 0 0 10px;
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
-}
 
-.page-galleries .gallery-item img {
-  width: 100%;
-  height: auto;          /* key: keep natural aspect ratio */
-  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.02);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.05);
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
-
 
 .page-galleries .gallery-item:hover {
   transform: translateY(-2px);
@@ -3220,13 +3232,13 @@ body.no-scroll {
 
 .page-galleries .gallery-item img {
   width: 100%;
-  height: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto; /* keep natural aspect ratio */
   display: block;
 }
 
-/* Lightbox */
+/* =========================
+   Lightbox
+   ========================= */
 .gallery-modal[hidden] { display: none; }
 
 .gallery-modal {
@@ -3249,14 +3261,12 @@ body.no-scroll {
   overflow: hidden;
 
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto; /* KEY FIX */
+  grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
-/* Make portrait photos feel nicer (not overly wide) */
 .gallery-modal-card.is-portrait {
   width: min(760px, 100%);
 }
-
 
 .gallery-modal-top {
   display: flex;
@@ -3302,7 +3312,7 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   padding: 10px;
-  min-height: 0; /* KEY FIX for grid overflow */
+  min-height: 0;
 }
 
 .gallery-modal-media img {
@@ -3316,7 +3326,6 @@ body.no-scroll {
   object-fit: contain;
 }
 
-
 .gallery-modal-bottom {
   display: flex;
   align-items: center;
@@ -3329,6 +3338,13 @@ body.no-scroll {
 .gallery-modal-nav {
   display: inline-flex;
   gap: 10px;
+}
+
+/* Responsive: stack sidebar under main */
+@media (max-width: 980px) {
+  .page-galleries .galleries-content {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Responsive */

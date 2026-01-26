@@ -7,8 +7,12 @@
     || document.querySelector('script[src*="assets/js/script.js"]')?.src;
   const scriptUrl = new URL(scriptSrc ?? window.location.href);
   const siteRootUrl = new URL("../..", scriptUrl);
+
   const HEADER_URL = new URL("components/header.html", siteRootUrl);
   const FOOTER_URL = new URL("components/footer.html", siteRootUrl);
+
+  // NEW: galleries module location (auto-loaded only on gallery pages)
+  const GALLERIES_URL = new URL("assets/js/galleries.js", siteRootUrl);
 
   let wantedOpen = false;
 
@@ -280,223 +284,41 @@
     });
   }
 
-  // ====== Galleries (JSON-driven grid + lightbox) ======
-  function initGalleries() {
+  // ====== Galleries module loader (auto-loads galleries.js only on gallery pages) ======
+  function initGalleriesModule() {
     const grid = document.querySelector(".js-gallery-grid");
     const dataEl = document.getElementById("gallery-data");
-    if (!grid || !dataEl) return;
+    if (!grid || !dataEl) return; // Not a gallery subpage
 
-    let data;
-    try {
-      data = JSON.parse(dataEl.textContent || "{}");
-    } catch (e) {
-      console.error("Invalid gallery JSON:", e);
+    // If already loaded, just init it
+    if (window.HK_Galleries && typeof window.HK_Galleries.init === "function") {
+      window.HK_Galleries.init();
       return;
     }
 
-    const items = Array.isArray(data.items) ? data.items : [];
-    const title = (data.title || "Галерия").toString();
+    // Prevent double loading
+    if (initGalleriesModule._loading) return;
+    initGalleriesModule._loading = true;
 
-    // Update counts (if present)
-    document.querySelectorAll(".js-gallery-count").forEach(el => {
-      el.textContent = String(items.length);
-    });
+    const s = document.createElement("script");
+    s.src = GALLERIES_URL.href;
+    s.defer = true;
 
-    // Render thumbnails
-    grid.innerHTML = "";
-    const frag = document.createDocumentFragment();
-
-    items.forEach((it, idx) => {
-      const full = it.full || it.src;
-      const thumb = it.thumb || it.full || it.src;
-      if (!full || !thumb) return;
-
-      const a = document.createElement("a");
-      a.className = "gallery-item";
-      a.href = full; // fallback if JS fails
-      a.dataset.full = full;
-      a.dataset.index = String(idx);
-      a.dataset.title = title;
-      a.dataset.alt = (it.alt || "").toString();
-
-      const img = document.createElement("img");
-      img.src = thumb;
-      img.alt = (it.alt || "").toString();
-      img.loading = "lazy";
-      img.decoding = "async";
-
-      // Thumb fallback: if thumbs/ doesn't exist, use full image instead
-      img.addEventListener("error", () => {
-        if (img.dataset._fallback === "1") return;
-        img.dataset._fallback = "1";
-        img.src = full;
-      });
-
-      a.appendChild(img);
-      frag.appendChild(a);
-    });
-
-    grid.appendChild(frag);
-
-    // Lightbox
-    const lb = ensureGalleryLightbox();
-    const links = Array.from(grid.querySelectorAll(".gallery-item"));
-
-    function openAt(index) {
-      if (!links.length) return;
-      const i = (index + links.length) % links.length;
-      const el = links[i];
-      const full = el.dataset.full;
-      const alt = el.dataset.alt || "";
-      const pageTitle = el.dataset.title || "Галерия";
-
-      lb.state.index = i;
-      lb.title.textContent = pageTitle;
-
-      lb.img.alt = alt;
-      lb.caption.textContent = alt;
-
-      // Toggle portrait styling after image loads
-      lb.img.onload = () => {
-        const isPortrait = lb.img.naturalHeight > lb.img.naturalWidth;
-        if (lb.card) lb.card.classList.toggle("is-portrait", isPortrait);
-      };
-
-      lb.img.src = full;
-
-      // Preload neighbors
-      preloadNeighbor(i - 1);
-      preloadNeighbor(i + 1);
-
-      showLightbox(lb);
-    }
-
-    function preloadNeighbor(index) {
-      if (!links.length) return;
-      const i = (index + links.length) % links.length;
-      const src = links[i].dataset.full;
-      if (!src) return;
-      const im = new Image();
-      im.decoding = "async";
-      im.src = src;
-    }
-
-    links.forEach((a) => {
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        const idx = parseInt(a.dataset.index || "0", 10);
-        openAt(Number.isFinite(idx) ? idx : 0);
-      });
-    });
-
-    lb.prev.addEventListener("click", () => openAt(lb.state.index - 1));
-    lb.next.addEventListener("click", () => openAt(lb.state.index + 1));
-    lb.close.addEventListener("click", () => hideLightbox(lb));
-
-    // Click outside card to close
-    lb.root.addEventListener("click", (e) => {
-      if (e.target === lb.root) hideLightbox(lb);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (lb.root.hidden) return;
-
-      if (e.key === "Escape") hideLightbox(lb);
-      if (e.key === "ArrowLeft") openAt(lb.state.index - 1);
-      if (e.key === "ArrowRight") openAt(lb.state.index + 1);
-    });
-  }
-
-  function ensureGalleryLightbox() {
-    let root = document.querySelector(".gallery-modal");
-    if (root) {
-      return {
-        root,
-        card: root.querySelector(".gallery-modal-card"),
-        title: root.querySelector(".gallery-modal-title"),
-        img: root.querySelector("img"),
-        caption: root.querySelector("[data-caption]"),
-        prev: root.querySelector("[data-prev]"),
-        next: root.querySelector("[data-next]"),
-        close: root.querySelector("[data-close]"),
-        state: root._state || (root._state = { index: 0 }),
-      };
-    }
-
-    root = document.createElement("div");
-    root.className = "gallery-modal";
-    root.hidden = true;
-    root.setAttribute("role", "dialog");
-    root.setAttribute("aria-modal", "true");
-    root.setAttribute("aria-label", "Преглед на снимка");
-    root.tabIndex = -1;
-
-    root.innerHTML = `
-      <div class="gallery-modal-card" role="document">
-        <div class="gallery-modal-top">
-          <div class="gallery-modal-title">Галерия</div>
-          <div class="gallery-modal-btns">
-            <button class="gallery-icon-btn" type="button" data-prev aria-label="Предишна">←</button>
-            <button class="gallery-icon-btn" type="button" data-next aria-label="Следваща">→</button>
-            <button class="gallery-icon-btn" type="button" data-close aria-label="Затвори">✕</button>
-          </div>
-        </div>
-
-        <div class="gallery-modal-media">
-          <img src="" alt="" />
-        </div>
-
-        <div class="gallery-modal-bottom">
-          <div data-caption style="font-size:1rem;color:rgba(0,0,0,0.65);line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></div>
-          <div class="gallery-modal-nav">
-            <button class="gallery-icon-btn" type="button" data-prev aria-label="Предишна">←</button>
-            <button class="gallery-icon-btn" type="button" data-next aria-label="Следваща">→</button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(root);
-
-    const api = {
-      root,
-      card: root.querySelector(".gallery-modal-card"),
-      title: root.querySelector(".gallery-modal-title"),
-      img: root.querySelector("img"),
-      caption: root.querySelector("[data-caption]"),
-      close: root.querySelector("[data-close]"),
-      state: (root._state = { index: 0 }),
+    s.onload = () => {
+      initGalleriesModule._loading = false;
+      if (window.HK_Galleries && typeof window.HK_Galleries.init === "function") {
+        window.HK_Galleries.init();
+      } else {
+        console.error("galleries.js loaded but HK_Galleries.init() not found.");
+      }
     };
 
-    // Wire duplicated prev/next (top + bottom)
-    const prevBtns = root.querySelectorAll("[data-prev]");
-    const nextBtns = root.querySelectorAll("[data-next]");
+    s.onerror = (e) => {
+      initGalleriesModule._loading = false;
+      console.error("Failed to load galleries.js", e);
+    };
 
-    api.prev = prevBtns[0];
-    api.next = nextBtns[0];
-
-    if (prevBtns[1]) prevBtns[1].addEventListener("click", () => api.prev.click());
-    if (nextBtns[1]) nextBtns[1].addEventListener("click", () => api.next.click());
-
-    return api;
-  }
-
-  function showLightbox(lb) {
-    lb.root.hidden = false;
-
-    // Don’t break your mobile menu lock
-    document.body.classList.add("no-scroll");
-
-    // Focus for accessibility
-    lb.close && lb.close.focus();
-  }
-
-  function hideLightbox(lb) {
-    lb.root.hidden = true;
-
-    // Only unlock scroll if mobile menu isn't open
-    const mobileMenuOpen = document.querySelector("#mobileMenu.open");
-    if (!mobileMenuOpen) document.body.classList.remove("no-scroll");
+    document.head.appendChild(s);
   }
 
   // Boot
@@ -505,5 +327,5 @@
   initHomeSmoothScroll();
   initFaqSearch();
   initRecommendationsFilter();
-  initGalleries();
+  initGalleriesModule();
 })();
