@@ -129,6 +129,35 @@
     }
   }
 
+  // ====== Smooth scroll (Home: "Скролни") ======
+  function initHomeSmoothScroll() {
+    const page = document.querySelector(".page-home");
+    if (!page) return;
+
+    const link = document.querySelector(".home-scroll[href^='#']");
+    if (!link) return;
+
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href") || "";
+      if (!href.startsWith("#")) return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+
+      // Update the URL hash without causing an instant jump
+      if (history && history.pushState) {
+        history.pushState(null, "", href);
+      } else {
+        location.hash = href;
+      }
+    });
+  }
+
   // ====== FAQ search (kept categories, but hides non-relevant groups + moves matching group(s) to top) ======
   function initFaqSearch() {
     const page = document.querySelector(".page-faq");
@@ -165,9 +194,6 @@
             // show all items
             const items = Array.from(g.querySelectorAll(".faq-item"));
             items.forEach(it => { it.hidden = false; });
-
-            // optional: close all items on reset (keeps tidy)
-            // it.removeAttribute("open");
           });
 
         if (empty) empty.hidden = true;
@@ -299,6 +325,13 @@
       img.loading = "lazy";
       img.decoding = "async";
 
+      // Thumb fallback: if thumbs/ doesn't exist, use full image instead
+      img.addEventListener("error", () => {
+        if (img.dataset._fallback === "1") return;
+        img.dataset._fallback = "1";
+        img.src = full;
+      });
+
       a.appendChild(img);
       frag.appendChild(a);
     });
@@ -322,6 +355,12 @@
 
       lb.img.alt = alt;
       lb.caption.textContent = alt;
+
+      // Toggle portrait styling after image loads
+      lb.img.onload = () => {
+        const isPortrait = lb.img.naturalHeight > lb.img.naturalWidth;
+        if (lb.card) lb.card.classList.toggle("is-portrait", isPortrait);
+      };
 
       lb.img.src = full;
 
@@ -373,6 +412,7 @@
     if (root) {
       return {
         root,
+        card: root.querySelector(".gallery-modal-card"),
         title: root.querySelector(".gallery-modal-title"),
         img: root.querySelector("img"),
         caption: root.querySelector("[data-caption]"),
@@ -420,6 +460,7 @@
 
     const api = {
       root,
+      card: root.querySelector(".gallery-modal-card"),
       title: root.querySelector(".gallery-modal-title"),
       img: root.querySelector("img"),
       caption: root.querySelector("[data-caption]"),
@@ -461,6 +502,7 @@
   // Boot
   loadHeader();
   loadFooter();
+  initHomeSmoothScroll();
   initFaqSearch();
   initRecommendationsFilter();
   initGalleries();

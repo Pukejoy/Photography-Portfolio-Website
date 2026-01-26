@@ -2265,7 +2265,7 @@ body.no-scroll {
   display: block;
 }
 
-/* overlay for readability (not frosted-glass, just clean) */
+/* overlay for readability (reduced opacity so photo is MORE visible) */
 .page-home .home-hero::before {
   content: "";
   position: absolute;
@@ -2273,9 +2273,9 @@ body.no-scroll {
   background:
     linear-gradient(
       to bottom,
-      rgba(255,255,255,0.70) 0%,
-      rgba(255,255,255,0.84) 45%,
-      rgba(255,255,255,0.96) 100%
+      rgba(255,255,255,0.45) 0%,
+      rgba(255,255,255,0.62) 45%,
+      rgba(255,255,255,0.82) 100%
     );
   z-index: 1;
 }
@@ -2352,7 +2352,7 @@ body.no-scroll {
   font-weight: var(--fw-semibold);
 }
 
-/* Scroll hint */
+/* Scroll hint + animation */
 .page-home .home-scroll {
   display: inline-flex;
   align-items: center;
@@ -2361,6 +2361,8 @@ body.no-scroll {
   color: rgba(0,0,0,0.70);
   font-size: 1rem;
   font-weight: var(--fw-semibold);
+  padding: 8px 12px;
+  border-radius: 999px;
 }
 
 .page-home .home-scroll:hover {
@@ -2373,6 +2375,23 @@ body.no-scroll {
   border-radius: 999px;
   background: var(--nav-active);
   box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+}
+
+.page-home .home-scroll-text,
+.page-home .home-scroll-dot {
+  animation: homeScrollFloat 1.25s ease-in-out infinite;
+}
+
+@keyframes homeScrollFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .home-scroll-text,
+  .page-home .home-scroll-dot {
+    animation: none;
+  }
 }
 
 /* Quick link cards */
@@ -2453,6 +2472,7 @@ body.no-scroll {
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: center 1%;
   aspect-ratio: 16 / 10;
 }
 
@@ -3164,21 +3184,34 @@ body.no-scroll {
   color: rgba(0,0,0,0.55);
 }
 
+/* Gallery grid (subpages) — masonry columns so portrait + landscape both look right */
 .page-galleries .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  column-count: 3;
+  column-gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .page-galleries .gallery-grid { column-count: 2; }
+}
+
+@media (max-width: 560px) {
+  .page-galleries .gallery-grid { column-count: 1; }
 }
 
 .page-galleries .gallery-item {
-  display: block;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: rgba(0,0,0,0.02);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.05);
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 10px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
 }
+
+.page-galleries .gallery-item img {
+  width: 100%;
+  height: auto;          /* key: keep natural aspect ratio */
+  display: block;
+}
+
 
 .page-galleries .gallery-item:hover {
   transform: translateY(-2px);
@@ -3216,8 +3249,14 @@ body.no-scroll {
   overflow: hidden;
 
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr) auto; /* KEY FIX */
 }
+
+/* Make portrait photos feel nicer (not overly wide) */
+.gallery-modal-card.is-portrait {
+  width: min(760px, 100%);
+}
+
 
 .gallery-modal-top {
   display: flex;
@@ -3259,19 +3298,24 @@ body.no-scroll {
 
 .gallery-modal-media {
   background: rgba(0,0,0,0.03);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
+  min-height: 0; /* KEY FIX for grid overflow */
 }
 
 .gallery-modal-media img {
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
   border-radius: 14px;
   border: 1px solid rgba(0,0,0,0.10);
   background: #fff;
   object-fit: contain;
 }
+
 
 .gallery-modal-bottom {
   display: flex;
