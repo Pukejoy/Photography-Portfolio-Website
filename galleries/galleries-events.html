@@ -3,26 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nikolay Kesov — Галерии / Събития</title>
-  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <title>Nikolay Kesov — Галерии • Събития</title>
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/img/Favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-galleries page-gallery">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">Галерии - Събития</h1>
+  <main class="galleries-page" aria-labelledby="gallery-title">
+    <section class="galleries-wrap">
+      <header class="galleries-head">
+        <p class="galleries-kicker"><a href="/galleries/galleries.html">Галерии</a> / Събития</p>
+        <h1 id="gallery-title" class="galleries-title">Събития</h1>
+        <p class="galleries-subtitle">Моменти, атмосфера и динамика — репортажен поглед.</p>
+      </header>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="galleries-content">
+        <section class="galleries-main" aria-label="Галерия събития">
+          <div class="gallery-toolbar">
+            <div class="gallery-meta">
+              <span class="gallery-count"><span class="js-gallery-count">0</span> снимки</span>
+              <span class="gallery-hint">Кликни за преглед. ← → за следваща/предишна. ESC за затваряне.</span>
+            </div>
+          </div>
+
+          <div class="gallery-grid js-gallery-grid" aria-label="Снимки"></div>
+        </section>
+
+        <aside class="galleries-side" aria-label="Информация">
+          <h2 class="galleries-side-title">Накратко</h2>
+
+          <div class="galleries-side-box">
+            <h3 class="galleries-side-h">Подход</h3>
+            <ul class="galleries-side-list">
+              <li>Дискретно присъствие</li>
+              <li>Ключови моменти</li>
+              <li>Чисти цветове</li>
+            </ul>
+          </div>
+
+          <div class="galleries-side-box">
+            <h3 class="galleries-side-h">Още</h3>
+            <div class="galleries-side-actions">
+              <a class="btn" href="/contacts.html">Запитване</a>
+              <a class="galleries-plain-link" href="/galleries/portraits.html">Портрети →</a>
+              <a class="galleries-plain-link" href="/galleries/travels.html">Пътувания →</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
-  <div id="footer-slot"></div>
+  <script type="application/json" id="gallery-data">
+  {
+    "title": "Събития",
+    "items": [
+      { "full": "../assets/img/galleries/events/e01.jpg", "thumb": "../assets/img/galleries/events/thumbs/e01.jpg", "alt": "Събитие 01" },
+      { "full": "../assets/img/galleries/events/e02.jpg", "thumb": "../assets/img/galleries/events/thumbs/e02.jpg", "alt": "Събитие 02" },
+      { "full": "../assets/img/galleries/events/e03.jpg", "thumb": "../assets/img/galleries/events/thumbs/e03.jpg", "alt": "Събитие 03" },
+      { "full": "../assets/img/galleries/events/e04.jpg", "thumb": "../assets/img/galleries/events/thumbs/e04.jpg", "alt": "Събитие 04" },
+      { "full": "../assets/img/galleries/events/e05.jpg", "thumb": "../assets/img/galleries/events/thumbs/e05.jpg", "alt": "Събитие 05" },
+      { "full": "../assets/img/galleries/events/e06.jpg", "thumb": "../assets/img/galleries/events/thumbs/e06.jpg", "alt": "Събитие 06" }
+    ]
+  }
+  </script>
 
-  <script src="/assets/js/script.js"></script>
+  <div id="footer-slot"></div>
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>
