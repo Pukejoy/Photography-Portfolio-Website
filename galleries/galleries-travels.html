@@ -3,26 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nikolay Kesov — Галерии / Пътувания</title>
-  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <title>Nikolay Kesov — Галерии • Пътувания</title>
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/img/Favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-galleries page-gallery">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">Галерии - Пътувания</h1>
+  <main class="galleries-page" aria-labelledby="gallery-title">
+    <section class="galleries-wrap">
+      <header class="galleries-head">
+        <p class="galleries-kicker"><a href="/galleries/galleries.html">Галерии</a> / Пътувания</p>
+        <h1 id="gallery-title" class="galleries-title">Пътувания</h1>
+        <p class="galleries-subtitle">Кадри от места, светлина и истории.</p>
+      </header>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="galleries-content">
+        <section class="galleries-main" aria-label="Галерия пътувания">
+          <div class="gallery-toolbar">
+            <div class="gallery-meta">
+              <span class="gallery-count"><span class="js-gallery-count">0</span> снимки</span>
+              <span class="gallery-hint">Кликни за преглед. ← → за навигация. ESC за затваряне.</span>
+            </div>
+          </div>
+
+          <div class="gallery-grid js-gallery-grid" aria-label="Снимки"></div>
+        </section>
+
+        <aside class="galleries-side" aria-label="Информация">
+          <h2 class="galleries-side-title">Накратко</h2>
+
+          <div class="galleries-side-box">
+            <h3 class="galleries-side-h">Фокус</h3>
+            <ul class="galleries-side-list">
+              <li>Пейзажи</li>
+              <li>Градски кадри</li>
+              <li>Атмосфера</li>
+            </ul>
+          </div>
+
+          <div class="galleries-side-box">
+            <h3 class="galleries-side-h">Още</h3>
+            <div class="galleries-side-actions">
+              <a class="btn" href="/contacts.html">Запитване</a>
+              <a class="galleries-plain-link" href="/galleries/portraits.html">Портрети →</a>
+              <a class="galleries-plain-link" href="/galleries/events.html">Събития →</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
-  <div id="footer-slot"></div>
+  <script type="application/json" id="gallery-data">
+  {
+    "title": "Пътувания",
+    "items": [
+      { "full": "../assets/img/galleries/travels/t01.jpg", "thumb": "../assets/img/galleries/travels/thumbs/t01.jpg", "alt": "Пътуване 01" },
+      { "full": "../assets/img/galleries/travels/t02.jpg", "thumb": "../assets/img/galleries/travels/thumbs/t02.jpg", "alt": "Пътуване 02" },
+      { "full": "../assets/img/galleries/travels/t03.jpg", "thumb": "../assets/img/galleries/travels/thumbs/t03.jpg", "alt": "Пътуване 03" },
+      { "full": "../assets/img/galleries/travels/t04.jpg", "thumb": "../assets/img/galleries/travels/thumbs/t04.jpg", "alt": "Пътуване 04" },
+      { "full": "../assets/img/galleries/travels/t05.jpg", "thumb": "../assets/img/galleries/travels/thumbs/t05.jpg", "alt": "Пътуване 05" },
+      { "full": "../assets/img/galleries/travels/t06.jpg", "thumb": "../assets/img/galleries/travels/thumbs/t06.jpg", "alt": "Пътуване 06" }
+    ]
+  }
+  </script>
 
-  <script src="/assets/js/script.js"></script>
+  <div id="footer-slot"></div>
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>

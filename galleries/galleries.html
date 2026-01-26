@@ -4,25 +4,113 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nikolay Kesov — Галерии</title>
-  <link rel="stylesheet" href="/assets/css/styles.css" />
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/img/Favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-galleries page-galleries-hub">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">Галерии</h1>
+  <main class="galleries-page" aria-labelledby="galleries-title">
+    <section class="galleries-wrap">
+      <header class="galleries-head">
+        <h1 id="galleries-title" class="galleries-title">Галерии</h1>
+        <p class="galleries-subtitle">
+          Избери категория — всички снимки се отварят в бърз преглед (lightbox),
+          а страниците са оптимизирани за бързо зареждане.
+        </p>
+      </header>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="galleries-content">
+        <!-- LEFT -->
+        <section class="galleries-main" aria-label="Категории галерии">
+          <div class="albums-grid">
+            <a class="album-card" href="/galleries/portraits.html">
+              <div class="album-cover">
+                <!-- Optional cover image (if you add it later) -->
+                <img class="album-cover-img" src="../assets/img/galleries/covers/portraits.jpg"
+                     alt="" loading="lazy" decoding="async"
+                     onerror="this.remove();" />
+              </div>
+              <div class="album-body">
+                <h2 class="album-title">Портрети</h2>
+                <p class="album-text">Индивидуални • двойки • бизнес портрети.</p>
+                <span class="album-link">Отвори →</span>
+              </div>
+            </a>
+
+            <a class="album-card" href="/galleries/events.html">
+              <div class="album-cover">
+                <img class="album-cover-img" src="../assets/img/galleries/covers/events.jpg"
+                     alt="" loading="lazy" decoding="async"
+                     onerror="this.remove();" />
+              </div>
+              <div class="album-body">
+                <h2 class="album-title">Събития</h2>
+                <p class="album-text">Репортажни моменти • динамика • атмосфера.</p>
+                <span class="album-link">Отвори →</span>
+              </div>
+            </a>
+
+            <a class="album-card" href="/galleries/travels.html">
+              <div class="album-cover">
+                <img class="album-cover-img" src="../assets/img/galleries/covers/travels.jpg"
+                     alt="" loading="lazy" decoding="async"
+                     onerror="this.remove();" />
+              </div>
+              <div class="album-body">
+                <h2 class="album-title">Пътувания</h2>
+                <p class="album-text">Пейзажи • градски кадри • истории.</p>
+                <span class="album-link">Отвори →</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="galleries-card">
+            <h3 class="galleries-h">Съвет за качване на снимки</h3>
+            <ul class="galleries-bullets">
+              <li>Grid: thumbs ~900px long edge (JPG quality 70–80)</li>
+              <li>Lightbox: large ~2400px long edge (JPG quality 75–85)</li>
+              <li>sRGB цветово пространство (web standard)</li>
+              <li>По желание: WebP/AVIF за още по-бързо зареждане</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- RIGHT -->
+        <aside class="galleries-side" aria-label="Бързи действия">
+          <h2 class="galleries-side-title">Накратко</h2>
+
+          <div class="galleries-side-box">
+            <h3 class="galleries-side-h">Как работи</h3>
+            <p class="galleries-side-text">
+              Показвам thumbnails за скорост. Когато отвориш снимка — зареждам голямата версия.
+            </p>
+          </div>
+
+          <div class="galleries-side-box">
+            <h3 class="galleries-side-h">Бързи връзки</h3>
+            <div class="galleries-side-actions">
+              <a class="btn" href="/contacts.html">Запитване</a>
+              <a class="galleries-plain-link" href="/recommendations.html">Препоръки</a>
+              <a class="galleries-plain-link" href="/services/services.html">Услуги</a>
+            </div>
+          </div>
+
+          <div class="galleries-side-box">
+            <h3 class="galleries-side-h">Отговор</h3>
+            <p class="galleries-side-text">Обикновено до 24–48 часа.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <div id="footer-slot"></div>
-
-  <script src="/assets/js/script.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>
