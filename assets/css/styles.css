@@ -1344,23 +1344,44 @@ body.no-scroll {
 }
 
 /* =========================
-   Lightbox
+   Lightbox (matches galleries.js markup)
    ========================= */
+
+/* Hide helper */
 .gallery-modal[hidden] { display: none; }
 
+/* Overlay */
 .gallery-modal {
   position: fixed;
   inset: 0;
   z-index: 30000;
+
   background: rgba(0,0,0,0.72);
   display: grid;
   place-items: center;
-  padding: 16px;
+
+  /* Comfortable padding + iOS safe areas */
+  padding: calc(12px + env(safe-area-inset-top))
+           calc(12px + env(safe-area-inset-right))
+           calc(12px + env(safe-area-inset-bottom))
+           calc(12px + env(safe-area-inset-left));
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 170ms ease, visibility 0s linear 170ms;
 }
 
-.gallery-modal-card {
+.gallery-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 170ms ease;
+}
+
+/* Card */
+.gallery-lb {
   width: min(1050px, 100%);
   max-height: min(86svh, 860px);
+
   background: #fff;
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.12);
@@ -1371,80 +1392,176 @@ body.no-scroll {
   grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
-.gallery-modal-card.is-portrait {
+.gallery-lb.is-portrait {
   width: min(760px, 100%);
 }
 
-.gallery-modal-top {
+/* Top bar */
+.gallery-lb-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+
   padding: 10px 12px;
   border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
-.gallery-modal-title {
+.gallery-lb-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.gallery-lb-title {
   font-size: 1rem;
   font-weight: var(--fw-semibold);
-  color: rgba(0,0,0,0.75);
+  color: rgba(0,0,0,0.78);
+
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.gallery-modal-btns {
-  display: inline-flex;
-  gap: 8px;
+.gallery-lb-counter {
+  font-size: 0.95rem;
+  font-weight: var(--fw-semibold);
+  color: rgba(0,0,0,0.55);
+  white-space: nowrap;
 }
 
-.gallery-icon-btn {
+.gallery-lb-close {
   appearance: none;
   -webkit-appearance: none;
-  border: 1px solid rgba(0,0,0,0.10);
-  background: rgba(0,0,0,0.02);
+
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+
   border-radius: 12px;
-  padding: 8px 10px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.02);
+
   cursor: pointer;
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-black);
+  font-size: 1.15rem;
+  line-height: 1;
 }
 
-.gallery-icon-btn:hover {
+.gallery-lb-close:hover {
   border-color: rgba(138,56,245,0.25);
 }
 
-.gallery-modal-media {
+/* Media area */
+.gallery-lb-media {
+  position: relative;
+  min-height: 0;
+
   background: rgba(0,0,0,0.03);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  min-height: 0;
+
+  padding: 12px;
 }
 
-.gallery-modal-media img {
+.gallery-lb-img {
   max-width: 100%;
   max-height: 100%;
+
   width: auto;
   height: auto;
+
+  object-fit: contain;
+  display: block;
+
   border-radius: 14px;
   border: 1px solid rgba(0,0,0,0.10);
   background: #fff;
-  object-fit: contain;
 }
 
-.gallery-modal-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+/* One simple set of arrows */
+.gallery-lb-arrow {
+  appearance: none;
+  -webkit-appearance: none;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.86);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+
+  cursor: pointer;
+  font-weight: var(--fw-black);
+  font-size: 1.8rem;
+  line-height: 1;
+
+  display: grid;
+  place-items: center;
+
+  user-select: none;
+}
+
+.gallery-lb-prev { left: 10px; }
+.gallery-lb-next { right: 10px; }
+
+.gallery-lb-arrow:hover {
+  background: #fff;
+  border-color: rgba(138,56,245,0.35);
+}
+
+.gallery-lb-arrow:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+/* Bottom / caption */
+.gallery-lb-bottom {
   padding: 10px 12px;
   border-top: 1px solid rgba(0,0,0,0.08);
 }
 
-.gallery-modal-nav {
-  display: inline-flex;
-  gap: 10px;
+.gallery-lb-caption {
+  font-size: 1rem;
+  color: rgba(0,0,0,0.72);
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+/* Loading state (optional but helps) */
+.gallery-lb.is-loading .gallery-lb-img {
+  opacity: 0.45;
+}
+
+/* Focus visibility */
+.gallery-lb button:focus-visible {
+  outline: 3px solid var(--nav-active);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+/* Lightbox: mobile tuning */
+@media (max-width: 720px) {
+  .gallery-lb-media { padding: 10px; }
+  .gallery-lb-arrow {
+    width: 44px;
+    height: 44px;
+  }
+  .gallery-lb-prev { left: 8px; }
+  .gallery-lb-next { right: 8px; }
+}
+
+@media (max-width: 520px) {
+  .gallery-lb-top { padding: 10px; }
+  .gallery-lb-close { width: 44px; height: 44px; }
+  .gallery-lb-bottom { padding: 10px; }
 }
 
 /* ====== Services Pages (Hub + sub-pages) ====== */
@@ -2915,5 +3032,65 @@ body.no-scroll {
     transition: none !important;
     animation: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   FIX: Mobile responsiveness (stack main + sidebar)
+   Put this at the VERY END of styles.css
+   ========================================================= */
+
+/* Tablets and down: force all 2-col page layouts to 1-col */
+@media (max-width: 980px) {
+  .page-about .about-content,
+  .page-galleries .galleries-content,
+  .page-services .services-content,
+  .page-recs .recs-content,
+  .page-gear .gear-content,
+  .page-faq .faq-content,
+  .page-contact .contact-content {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
+  }
+
+  /* Ensure children can shrink properly (prevents sideways overflow) */
+  .page-about .about-content > *,
+  .page-galleries .galleries-content > *,
+  .page-services .services-content > *,
+  .page-recs .recs-content > *,
+  .page-gear .gear-content > *,
+  .page-faq .faq-content > *,
+  .page-contact .contact-content > * {
+    min-width: 0;
+  }
+
+  /* Services: also collapse tiles/packages on tablet widths */
+  .page-services .services-tiles,
+  .page-services .services-packages {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Galleries hub: prefer 2->1 sooner (matches your “correct” screenshot feel) */
+  .page-galleries .albums-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Phones: make sidebar actions/buttons not look cramped */
+@media (max-width: 720px) {
+  .page-galleries .galleries-side-actions,
+  .page-services .services-side-actions,
+  .page-galleries .galleries-side,
+  .page-services .services-side,
+  .page-about .about-side {
+    width: 100%;
+  }
+
+  .page-galleries .galleries-side-actions .btn,
+  .page-services .services-side-actions .btn,
+  .page-about .about-side .btn {
+    width: 100%;
+    text-align: center;
   }
 }
