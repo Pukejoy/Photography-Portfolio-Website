@@ -4,25 +4,103 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nikolay Kesov — Услуги</title>
-  <link rel="stylesheet" href="/assets/css/styles.css" />
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/img/Favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-services">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">Услуги</h1>
+  <main class="services-page" aria-labelledby="services-title">
+    <section class="services-wrap">
+      <header class="services-head">
+        <h1 id="services-title" class="services-title">Услуги</h1>
+        <p class="services-subtitle">
+          Две основни направления — <strong>Събития</strong> и <strong>Портрети</strong>.
+          Избери секция и виж детайли, как протича процесът и какво получаваш.
+        </p>
+      </header>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="services-content">
+        <!-- LEFT -->
+        <section class="services-main" aria-label="Списък услуги">
+          <div class="services-tiles">
+            <a class="services-tile" href="/services/services-events.html">
+              <div class="services-tile-top">
+                <h2 class="services-tile-h">Събития</h2>
+                <span class="services-badge">репортаж</span>
+              </div>
+              <p class="services-tile-p">
+                Рожден ден • фирмено • частно събитие • концерт/културно.
+                Дискретно присъствие и силни моменти.
+              </p>
+              <span class="services-tile-link">Отвори →</span>
+            </a>
+
+            <a class="services-tile" href="/services/services-portraits.html">
+              <div class="services-tile-top">
+                <h2 class="services-tile-h">Портрети</h2>
+                <span class="services-badge">студио/на открито</span>
+              </div>
+              <p class="services-tile-p">
+                Индивидуални • двойки • бизнес портрети.
+                Насоки по време на снимането + чиста обработка.
+              </p>
+              <span class="services-tile-link">Отвори →</span>
+            </a>
+          </div>
+
+          <div class="services-card">
+            <h3 class="services-h">Как работим</h3>
+            <ol class="services-steps">
+              <li>Пишеш ми през <a href="/contacts.html">Контакти</a> (дата/град/тип снимане).</li>
+              <li>Връщам отговор до 24–48 часа с варианти и насоки.</li>
+              <li>Уточняваме детайлите (локация, стил, бюджет/пакет).</li>
+              <li>Снимаме → обработвам → получаваш готовите кадри.</li>
+            </ol>
+            <p class="services-note">
+              Ако имаш въпроси за срокове, RAW файлове или лицензиране — виж <a href="/faq.html">ЧЗВ</a>.
+            </p>
+          </div>
+        </section>
+
+        <!-- RIGHT -->
+        <aside class="services-side" aria-label="Накратко и бързи действия">
+          <h2 class="services-side-title">Накратко</h2>
+
+          <div class="services-side-box">
+            <h3 class="services-side-h">Подход</h3>
+            <ul class="services-side-list">
+              <li>Чисти кадри и естествено усещане</li>
+              <li>Кратък и ясен процес</li>
+              <li>Дискретна работа на събития</li>
+              <li>Насоки при портрети</li>
+            </ul>
+          </div>
+
+          <div class="services-side-box">
+            <h3 class="services-side-h">Бързи връзки</h3>
+            <div class="services-side-actions">
+              <a class="btn" href="/contacts.html">Запитване</a>
+              <a class="services-plain-link" href="/galleries/galleries.html">Галерии</a>
+              <a class="services-plain-link" href="/recommendations.html">Препоръки</a>
+            </div>
+          </div>
+
+          <div class="services-side-box">
+            <h3 class="services-side-h">Отговор</h3>
+            <p class="services-side-text">Обикновено до 24–48 часа.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <div id="footer-slot"></div>
-
-  <script src="/assets/js/script.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>

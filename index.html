@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nikolay Kesov — Начало</title>
+
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
@@ -11,14 +12,180 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-home">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">Начало</h1>
+  <main class="home" aria-labelledby="home-title">
+    <!-- HERO -->
+    <section class="home-hero" aria-label="Водеща снимка и основни действия">
+      <!-- Replace this with YOUR strongest photo -->
+      <div class="home-hero-media" aria-hidden="true">
+        <img
+          src="./assets/img/home/hero.jpg"
+          alt=""
+          loading="eager"
+          decoding="async"
+        />
+      </div>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="home-hero-inner">
+        <div class="home-hero-card">
+          <h1 id="home-title" class="home-hero-title">Фотография, която остава.</h1>
+          <p class="home-hero-subtitle">
+            Портрети • Събития • Кадри с усещане — с чист процес и ясни очаквания.
+          </p>
+
+          <div class="home-hero-actions">
+            <a class="btn btn--primary" href="/contacts.html">Запази дата</a>
+            <a class="btn btn--outline" href="/galleries/galleries.html">Виж галерии</a>
+          </div>
+
+          <div class="home-hero-meta">
+            <span class="home-pill">Отговор: до 24–48 часа</span>
+            <span class="home-pill">Базирано в България</span>
+          </div>
+        </div>
+
+        <a class="home-scroll" href="#home-start" aria-label="Скролни надолу към съдържанието">
+          <span class="home-scroll-dot" aria-hidden="true"></span>
+          <span class="home-scroll-text">Скролни</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section id="home-start" class="home-section" aria-label="Бързи връзки">
+      <div class="home-container">
+        <header class="home-section-head">
+          <h2 class="home-h2">Най-бързият път</h2>
+          <p class="home-lead">
+            Избери посока — всичко е направено да е ясно, кратко и удобно.
+          </p>
+        </header>
+
+        <div class="home-cards">
+          <a class="home-card" href="/services/services.html">
+            <h3 class="home-card-h">Услуги</h3>
+            <p class="home-card-p">Какво снимам и как протича работата.</p>
+            <span class="home-card-link">Отвори</span>
+          </a>
+
+          <a class="home-card" href="/recommendations.html">
+            <h3 class="home-card-h">Препоръки</h3>
+            <p class="home-card-p">Реални впечатления и оценки от клиенти.</p>
+            <span class="home-card-link">Отвори</span>
+          </a>
+
+          <a class="home-card" href="/faq.html">
+            <h3 class="home-card-h">ЧЗВ</h3>
+            <p class="home-card-p">Срокове, цени, RAW, лицензиране и др.</p>
+            <span class="home-card-link">Отвори</span>
+          </a>
+
+          <a class="home-card" href="/gear.html">
+            <h3 class="home-card-h">Оборудване</h3>
+            <p class="home-card-p">С какво снимам и обработвам.</p>
+            <span class="home-card-link">Отвори</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE STRIPS (more photos as you scroll) -->
+    <section class="home-section" aria-label="Избрани секции със снимки">
+      <div class="home-container">
+        <div class="home-feature home-feature--right">
+          <div class="home-feature-media">
+            <img src="./assets/img/home/feature-1.jpg" alt="Примерна фотография — портрет" loading="lazy" decoding="async">
+          </div>
+
+          <div class="home-feature-body">
+            <h2 class="home-h2">Портрети с характер</h2>
+            <p class="home-lead">
+              Чисти кадри, приятен процес и насоки, ако не си сигурен как да позираш.
+            </p>
+            <div class="home-feature-actions">
+              <a class="btn btn--primary" href="/galleries/galleries.html">Виж портрети</a>
+              <a class="btn btn--outline" href="/services/services.html">Как работя</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-feature home-feature--left">
+          <div class="home-feature-media">
+            <img src="./assets/img/home/feature-2.jpg" alt="Примерна фотография — събитие" loading="lazy" decoding="async">
+          </div>
+
+          <div class="home-feature-body">
+            <h2 class="home-h2">Събития без напрежение</h2>
+            <p class="home-lead">
+              Документално усещане + силни моменти. Дискретно присъствие и стабилен резултат.
+            </p>
+            <div class="home-feature-actions">
+              <a class="btn btn--primary" href="/contacts.html">Запитване</a>
+              <a class="btn btn--outline" href="/recommendations.html">Виж отзиви</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO MOSAIC -->
+    <section class="home-section" aria-label="Още кадри">
+      <div class="home-container">
+        <header class="home-section-head">
+          <h2 class="home-h2">Още кадри</h2>
+          <p class="home-lead">
+            Подмени тези снимки с твои — идеята е началната страница да “продава” стила ти още от първата секунда.
+          </p>
+        </header>
+
+        <div class="home-mosaic">
+          <a class="home-shot" href="/galleries/galleries.html" aria-label="Отвори галерии">
+            <img src="./assets/img/home/shot-1.jpg" alt="Снимка 1" loading="lazy" decoding="async">
+          </a>
+
+          <a class="home-shot" href="/galleries/galleries.html" aria-label="Отвори галерии">
+            <img src="./assets/img/home/shot-2.jpg" alt="Снимка 2" loading="lazy" decoding="async">
+          </a>
+
+          <a class="home-shot" href="/galleries/galleries.html" aria-label="Отвори галерии">
+            <img src="./assets/img/home/shot-3.jpg" alt="Снимка 3" loading="lazy" decoding="async">
+          </a>
+
+          <a class="home-shot" href="/galleries/galleries.html" aria-label="Отвори галерии">
+            <img src="./assets/img/home/shot-4.jpg" alt="Снимка 4" loading="lazy" decoding="async">
+          </a>
+
+          <a class="home-shot" href="/galleries/galleries.html" aria-label="Отвори галерии">
+            <img src="./assets/img/home/shot-5.jpg" alt="Снимка 5" loading="lazy" decoding="async">
+          </a>
+
+          <a class="home-shot" href="/galleries/galleries.html" aria-label="Отвори галерии">
+            <img src="./assets/img/home/shot-6.jpg" alt="Снимка 6" loading="lazy" decoding="async">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="home-section" aria-label="Финален призив към действие">
+      <div class="home-container">
+        <div class="home-cta">
+          <div>
+            <h2 class="home-h2">Готов ли си да го направим?</h2>
+            <p class="home-lead">
+              Ако имаш въпрос или искаш да запазиш дата — пиши ми. Формата е бърза и ясна.
+            </p>
+          </div>
+
+          <div class="home-cta-actions">
+            <a class="btn btn--primary" href="/contacts.html">Към Контакти</a>
+            <a class="btn btn--outline" href="/faq.html">Първо ЧЗВ</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="footer-slot"></div>

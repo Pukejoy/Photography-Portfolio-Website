@@ -3,26 +3,129 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nikolay Kesov — Услуги / Заснемане на събитие</title>
-  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <title>Nikolay Kesov — Услуги • Събития</title>
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/img/Favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body>
-<div id="header-slot"></div>
+<body class="page-services page-services-events">
+  <div id="header-slot"></div>
 
-  <main class="container" style="padding: 50px 0; padding-inline: 50px 0;">
-    <h1 style="font-size: 28px; margin-bottom: 16px;">Услуга - Заснемане на събитие</h1>
+  <main class="services-page" aria-labelledby="events-title">
+    <section class="services-wrap">
+      <header class="services-head">
+        <p class="services-kicker"><a href="/services/services.html">Услуги</a> / Събития</p>
+        <h1 id="events-title" class="services-title">Събития</h1>
+        <p class="services-subtitle">
+          Репортажен стил + ключови кадри. Целта е да уловя моментите без да “преча” на събитието.
+        </p>
+      </header>
 
-    <!-- Example button like your design -->
-    <button class="btn" type="button">Научи повече</button>
+      <div class="services-content">
+        <!-- LEFT -->
+        <section class="services-main" aria-label="Детайли за събития">
+          <div class="services-card">
+            <h2 class="services-h">Подход</h2>
+            <p class="services-p">
+              Работя дискретно и целя естествени кадри. При нужда — кратки насоки за групови снимки,
+              без да спирам динамиката на събитието.
+            </p>
+          </div>
+
+          <div class="services-card">
+            <h2 class="services-h">Какво получаваш</h2>
+            <ul class="services-bullets">
+              <li>Подбрани и обработени кадри (цветове, контраст, кадриране)</li>
+              <li>Онлайн галерия за сваляне и споделяне</li>
+              <li>Бърза комуникация и ясни очаквания</li>
+            </ul>
+            <p class="services-note">
+              За лицензиране при комерсиална употреба — виж <a href="/faq.html">ЧЗВ</a>.
+            </p>
+          </div>
+
+          <div class="services-card">
+            <h2 class="services-h">Пакети (примерни)</h2>
+
+            <div class="services-packages">
+              <article class="services-package">
+                <h3 class="services-package-h">Кратко събитие</h3>
+                <p class="services-package-p">Подходящо за малки събития/частни поводи.</p>
+                <ul class="services-mini">
+                  <li>до ~2 часа</li>
+                  <li>подбрани обработени кадри</li>
+                  <li>онлайн галерия</li>
+                </ul>
+              </article>
+
+              <article class="services-package">
+                <h3 class="services-package-h">Стандарт</h3>
+                <p class="services-package-p">Най-често избиран вариант.</p>
+                <ul class="services-mini">
+                  <li>до ~4 часа</li>
+                  <li>повече ключови моменти</li>
+                  <li>онлайн галерия</li>
+                </ul>
+              </article>
+
+              <article class="services-package">
+                <h3 class="services-package-h">Разширен</h3>
+                <p class="services-package-p">За по-дълги/по-динамични събития.</p>
+                <ul class="services-mini">
+                  <li>до ~6+ часа</li>
+                  <li>пълен репортаж</li>
+                  <li>онлайн галерия</li>
+                </ul>
+              </article>
+            </div>
+
+            <p class="services-note">
+              Това са ориентири — финалният вариант зависи от дата, локация и обем работа.
+            </p>
+          </div>
+        </section>
+
+        <!-- RIGHT -->
+        <aside class="services-side" aria-label="Резюме и действие">
+          <h2 class="services-side-title">Бързо запитване</h2>
+
+          <div class="services-side-box">
+            <h3 class="services-side-h">Подходящо за</h3>
+            <ul class="services-side-list">
+              <li>Рождени дни</li>
+              <li>Фирмени събития</li>
+              <li>Частни поводи</li>
+              <li>Културни/спортни</li>
+            </ul>
+          </div>
+
+          <div class="services-side-box">
+            <h3 class="services-side-h">Какво да напишеш</h3>
+            <ul class="services-side-list">
+              <li>Дата + град</li>
+              <li>Тип събитие</li>
+              <li>Прибл. продължителност</li>
+              <li>Ако има специфичен стил</li>
+            </ul>
+          </div>
+
+          <div class="services-side-box">
+            <h3 class="services-side-h">Действие</h3>
+            <div class="services-side-actions">
+              <a class="btn" href="/contacts.html">Към Контакти</a>
+              <a class="services-plain-link" href="/recommendations.html">Виж отзиви</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <div id="footer-slot"></div>
-
-  <script src="/assets/js/script.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>
