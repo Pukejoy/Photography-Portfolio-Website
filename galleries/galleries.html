@@ -12,26 +12,29 @@
   <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body class="page-galleries page-galleries-hub">
+<body class="page-galleries page-galleries-hub page-shell">
+  <!-- Header injected via shared script for consistent navigation. -->
   <div id="header-slot"></div>
 
-  <main class="galleries-page" aria-labelledby="galleries-title">
-    <section class="galleries-wrap">
-      <header class="galleries-head">
-        <h1 id="galleries-title" class="galleries-title">Галерии</h1>
-        <p class="galleries-subtitle">
+  <main class="galleries-page page-shell__page" aria-labelledby="galleries-title">
+    <!-- Shared wrapper provides the card-like layout. -->
+    <section class="galleries-wrap page-shell__wrap">
+      <!-- Page title and subtitle. -->
+      <header class="galleries-head page-shell__head">
+        <h1 id="galleries-title" class="galleries-title page-shell__title">Галерии</h1>
+        <p class="galleries-subtitle page-shell__subtitle">
           Избери категория — всички снимки се отварят в бърз преглед (lightbox),
           а страниците са оптимизирани за бързо зареждане.
         </p>
       </header>
 
       <div class="galleries-content">
-        <!-- LEFT -->
-        <section class="galleries-main" aria-label="Категории галерии">
+        <!-- LEFT: hub tiles and guidance. -->
+        <section class="galleries-main panel" aria-label="Категории галерии">
           <div class="albums-grid">
             <a class="album-card" href="/galleries/galleries-portraits.html">
               <div class="album-cover">
-                <!-- Optional cover image (if you add it later) -->
+                <!-- Optional cover image (remove onerror once real assets are in place). -->
                 <img class="album-cover-img" src="../assets/img/galleries/covers/portraits.jpg"
                      alt="" loading="lazy" decoding="async"
                      onerror="this.remove();" />
@@ -70,7 +73,8 @@
             </a>
           </div>
 
-          <div class="galleries-card">
+          <!-- Upload/resizing guidance for future image updates. -->
+          <div class="galleries-card panel panel--soft panel--raised">
             <h3 class="galleries-h">Съвет за качване на снимки</h3>
             <ul class="galleries-bullets">
               <li>Grid: thumbs ~900px long edge (JPG quality 70–80)</li>
@@ -81,18 +85,18 @@
           </div>
         </section>
 
-        <!-- RIGHT -->
-        <aside class="galleries-side" aria-label="Бързи действия">
+        <!-- RIGHT: summary and quick actions. -->
+        <aside class="galleries-side panel panel--soft" aria-label="Бързи действия">
           <h2 class="galleries-side-title">Накратко</h2>
 
-          <div class="galleries-side-box">
+          <div class="galleries-side-box panel panel--compact">
             <h3 class="galleries-side-h">Как работи</h3>
             <p class="galleries-side-text">
               Показвам thumbnails за скорост. Когато отвориш снимка — зареждам голямата версия.
             </p>
           </div>
 
-          <div class="galleries-side-box">
+          <div class="galleries-side-box panel panel--compact">
             <h3 class="galleries-side-h">Бързи връзки</h3>
             <div class="galleries-side-actions">
               <a class="btn" href="/contacts.html">Запитване</a>
@@ -101,7 +105,7 @@
             </div>
           </div>
 
-          <div class="galleries-side-box">
+          <div class="galleries-side-box panel panel--compact">
             <h3 class="galleries-side-h">Отговор</h3>
             <p class="galleries-side-text">Обикновено до 24–48 часа.</p>
           </div>
@@ -110,7 +114,9 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="../assets/js/script.js"></script>
 </body>
 </html>

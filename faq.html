@@ -12,22 +12,25 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body class="page-faq">
+<body class="page-faq page-shell">
+  <!-- Header injected via shared script for site-wide consistency. -->
   <div id="header-slot"></div>
 
-  <main class="faq-page" aria-labelledby="faq-title">
-    <section class="faq-wrap">
-      <header class="faq-head">
-        <h1 id="faq-title" class="faq-title">ЧЗВ</h1>
-        <p class="faq-subtitle">
+  <main class="faq-page page-shell__page" aria-labelledby="faq-title">
+    <!-- Shared wrapper provides the “paper” layout shell. -->
+    <section class="faq-wrap page-shell__wrap">
+      <!-- Page title and subtitle. -->
+      <header class="faq-head page-shell__head">
+        <h1 id="faq-title" class="faq-title page-shell__title">ЧЗВ</h1>
+        <p class="faq-subtitle page-shell__subtitle">
           Най-честите въпроси за фотосесии, обработка, срокове и лицензиране.
         </p>
       </header>
 
       <div class="faq-content">
-        <!-- LEFT: FAQ main -->
-        <div class="faq-main">
-          <!-- Search (uses same "field box" look as Contacts) -->
+        <!-- LEFT: FAQ main content column. -->
+        <div class="faq-main panel">
+          <!-- Search field for filtering questions (wired in faq JS if added later). -->
           <div class="faq-search">
             <label for="faq-search-input">Търсене</label>
             <input
@@ -39,6 +42,7 @@
             <p class="faq-search-hint">Показва въпроси, които съдържат търсената дума/фраза.</p>
           </div>
 
+          <!-- Empty state shown when search yields no matches. -->
           <p class="faq-empty" id="faq-empty" hidden>Няма резултати. Опитай с друга дума.</p>
 
           <!-- GROUP: Booking -->
@@ -158,8 +162,8 @@
           </section>
         </div>
 
-        <!-- RIGHT: Sidebar (same vibe as Contacts right column) -->
-        <aside class="faq-side" aria-label="Помощ и контакти">
+        <!-- RIGHT: Sidebar (quick help + contact prompt). -->
+        <aside class="faq-side panel panel--soft" aria-label="Помощ и контакти">
           <h2 class="faq-side-title">Не намираш отговора?</h2>
 
           <p class="faq-side-text">
@@ -168,16 +172,16 @@
 
           <a class="btn" href="/contacts.html">Въпроси? Натисни тук...</a>
 
-          <div class="faq-side-box">
+          <div class="faq-side-box panel panel--compact">
             <h3 class="faq-side-h">Полезно</h3>
-            <ul class="faq-side-list">
+            <ul class="faq-side-list list-dots">
               <li>Добави дата + град</li>
               <li>Тип снимане (портрет/събитие)</li>
               <li>Примерен стил (ако имаш)</li>
             </ul>
           </div>
 
-          <div class="faq-side-box">
+          <div class="faq-side-box panel panel--compact">
             <h3 class="faq-side-h">Отговор</h3>
             <p class="faq-side-text-sm">Обикновено до 24–48 часа.</p>
           </div>
@@ -186,8 +190,10 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
 
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

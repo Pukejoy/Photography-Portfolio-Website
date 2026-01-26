@@ -12,24 +12,27 @@
   <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body class="page-services">
+<body class="page-services page-shell">
+  <!-- Header injected via shared script. -->
   <div id="header-slot"></div>
 
-  <main class="services-page" aria-labelledby="services-title">
-    <section class="services-wrap">
-      <header class="services-head">
-        <h1 id="services-title" class="services-title">Услуги</h1>
-        <p class="services-subtitle">
+  <main class="services-page page-shell__page" aria-labelledby="services-title">
+    <!-- Shared wrapper for “paper” layout. -->
+    <section class="services-wrap page-shell__wrap">
+      <!-- Page title and intro copy. -->
+      <header class="services-head page-shell__head">
+        <h1 id="services-title" class="services-title page-shell__title">Услуги</h1>
+        <p class="services-subtitle page-shell__subtitle">
           Две основни направления — <strong>Събития</strong> и <strong>Портрети</strong>.
           Избери секция и виж детайли, как протича процесът и какво получаваш.
         </p>
       </header>
 
       <div class="services-content">
-        <!-- LEFT -->
+        <!-- LEFT: hub tiles and process summary. -->
         <section class="services-main" aria-label="Списък услуги">
           <div class="services-tiles">
-            <a class="services-tile" href="/services/services-events.html">
+            <a class="services-tile panel panel--soft panel--raised panel--hover" href="/services/services-events.html">
               <div class="services-tile-top">
                 <h2 class="services-tile-h">Събития</h2>
                 <span class="services-badge">репортаж</span>
@@ -41,7 +44,7 @@
               <span class="services-tile-link">Отвори →</span>
             </a>
 
-            <a class="services-tile" href="/services/services-portraits.html">
+            <a class="services-tile panel panel--soft panel--raised panel--hover" href="/services/services-portraits.html">
               <div class="services-tile-top">
                 <h2 class="services-tile-h">Портрети</h2>
                 <span class="services-badge">студио/на открито</span>
@@ -54,7 +57,7 @@
             </a>
           </div>
 
-          <div class="services-card">
+          <div class="services-card panel panel--soft panel--raised">
             <h3 class="services-h">Как работим</h3>
             <ol class="services-steps">
               <li>Пишеш ми през <a href="/contacts.html">Контакти</a> (дата/град/тип снимане).</li>
@@ -68,13 +71,13 @@
           </div>
         </section>
 
-        <!-- RIGHT -->
-        <aside class="services-side" aria-label="Накратко и бързи действия">
+        <!-- RIGHT: summary and quick actions. -->
+        <aside class="services-side panel panel--soft" aria-label="Накратко и бързи действия">
           <h2 class="services-side-title">Накратко</h2>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Подход</h3>
-            <ul class="services-side-list">
+            <ul class="services-side-list list-dots">
               <li>Чисти кадри и естествено усещане</li>
               <li>Кратък и ясен процес</li>
               <li>Дискретна работа на събития</li>
@@ -82,7 +85,7 @@
             </ul>
           </div>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Бързи връзки</h3>
             <div class="services-side-actions">
               <a class="btn" href="/contacts.html">Запитване</a>
@@ -91,7 +94,7 @@
             </div>
           </div>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Отговор</h3>
             <p class="services-side-text">Обикновено до 24–48 часа.</p>
           </div>
@@ -100,7 +103,9 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="../assets/js/script.js"></script>
 </body>
 </html>
