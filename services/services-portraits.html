@@ -12,23 +12,26 @@
   <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body class="page-services page-services-portraits">
+<body class="page-services page-services-portraits page-shell">
+  <!-- Header injected via shared script. -->
   <div id="header-slot"></div>
 
-  <main class="services-page" aria-labelledby="portraits-title">
-    <section class="services-wrap">
-      <header class="services-head">
+  <main class="services-page page-shell__page" aria-labelledby="portraits-title">
+    <!-- Shared wrapper for “paper” layout. -->
+    <section class="services-wrap page-shell__wrap">
+      <!-- Breadcrumb + page title. -->
+      <header class="services-head page-shell__head">
         <p class="services-kicker"><a href="/services/services.html">Услуги</a> / Портрети</p>
-        <h1 id="portraits-title" class="services-title">Портрети</h1>
-        <p class="services-subtitle">
+        <h1 id="portraits-title" class="services-title page-shell__title">Портрети</h1>
+        <p class="services-subtitle page-shell__subtitle">
           Индивидуални, двойки и бизнес портрети. Ако не си “фотогеничен” — това е напълно окей, ще те водя.
         </p>
       </header>
 
       <div class="services-content">
-        <!-- LEFT -->
+        <!-- LEFT: service details and packages. -->
         <section class="services-main" aria-label="Детайли за портрети">
-          <div class="services-card">
+          <div class="services-card panel panel--soft panel--raised">
             <h2 class="services-h">Подход</h2>
             <p class="services-p">
               Работим спокойно и без напрежение. Давам ясни и кратки насоки (поза, ръце, поглед),
@@ -36,7 +39,7 @@
             </p>
           </div>
 
-          <div class="services-card">
+          <div class="services-card panel panel--soft panel--raised">
             <h2 class="services-h">Какво включва</h2>
             <ul class="services-bullets">
               <li>Помощ за локация (на открито/градски стил/студио според възможност)</li>
@@ -46,34 +49,34 @@
             </ul>
           </div>
 
-          <div class="services-card">
+          <div class="services-card panel panel--soft panel--raised">
             <h2 class="services-h">Пакети (примерни)</h2>
 
             <div class="services-packages">
-              <article class="services-package">
+              <article class="services-package panel panel--compact">
                 <h3 class="services-package-h">Мини</h3>
                 <p class="services-package-p">Кратка сесия — идеална за 1–2 визии.</p>
-                <ul class="services-mini">
+                <ul class="services-mini list-dots">
                   <li>~30–45 мин</li>
                   <li>подбрани обработени кадри</li>
                   <li>1 локация</li>
                 </ul>
               </article>
 
-              <article class="services-package">
+              <article class="services-package panel panel--compact">
                 <h3 class="services-package-h">Стандарт</h3>
                 <p class="services-package-p">Най-балансиран вариант.</p>
-                <ul class="services-mini">
+                <ul class="services-mini list-dots">
                   <li>~60–90 мин</li>
                   <li>повече разнообразие</li>
                   <li>1–2 локации</li>
                 </ul>
               </article>
 
-              <article class="services-package">
+              <article class="services-package panel panel--compact">
                 <h3 class="services-package-h">Бизнес портрети</h3>
                 <p class="services-package-p">За CV/LinkedIn/сайт/екип.</p>
-                <ul class="services-mini">
+                <ul class="services-mini list-dots">
                   <li>консистентен стил</li>
                   <li>чист фон/локация</li>
                   <li>подходящи кадри за бранд</li>
@@ -87,13 +90,13 @@
           </div>
         </section>
 
-        <!-- RIGHT -->
-        <aside class="services-side" aria-label="Резюме и действие">
+        <!-- RIGHT: summary and action links. -->
+        <aside class="services-side panel panel--soft" aria-label="Резюме и действие">
           <h2 class="services-side-title">Подготовка</h2>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Полезно</h3>
-            <ul class="services-side-list">
+            <ul class="services-side-list list-dots">
               <li>2–3 визии (дрехи)</li>
               <li>Кратка идея за стил</li>
               <li>Примерни кадри (ако имаш)</li>
@@ -101,7 +104,7 @@
             </ul>
           </div>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Действие</h3>
             <div class="services-side-actions">
               <a class="btn" href="/contacts.html">Запази час</a>
@@ -109,7 +112,7 @@
             </div>
           </div>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Отговор</h3>
             <p class="services-side-text">Обикновено до 24–48 часа.</p>
           </div>
@@ -118,7 +121,9 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="../assets/js/script.js"></script>
 </body>
 </html>

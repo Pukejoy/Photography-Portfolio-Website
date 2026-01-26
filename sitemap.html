@@ -13,17 +13,21 @@
 </head>
 
 <body class="page-sitemap">
+  <!-- Header injected via shared script. -->
   <div id="header-slot"></div>
 
   <main class="sitemap-page" aria-labelledby="sitemap-title">
-    <section class="sitemap-card">
+    <!-- Wrapper matches the utility page card styling. -->
+    <section class="sitemap-wrap">
+      <!-- Page title and short description. -->
       <header class="sitemap-head">
         <h1 id="sitemap-title" class="sitemap-title">Sitemap</h1>
         <p class="sitemap-subtitle">Визуална карта на уебсайта.</p>
       </header>
 
+      <!-- Two-column grid of link groups. -->
       <div class="sitemap-grid">
-        <section class="sitemap-group" aria-labelledby="sm-main">
+        <section class="sitemap-col panel panel--soft" aria-labelledby="sm-main">
           <h2 id="sm-main" class="sitemap-h">Основни</h2>
           <ul class="sitemap-list">
             <li><a href="/index.html">Начало</a></li>
@@ -35,7 +39,7 @@
           </ul>
         </section>
 
-        <section class="sitemap-group" aria-labelledby="sm-gal">
+        <section class="sitemap-col panel panel--soft" aria-labelledby="sm-gal">
           <h2 id="sm-gal" class="sitemap-h">Галерии</h2>
           <ul class="sitemap-list">
             <li><a href="/galleries/galleries.html">Всички галерии</a></li>
@@ -45,7 +49,7 @@
           </ul>
         </section>
 
-        <section class="sitemap-group" aria-labelledby="sm-services">
+        <section class="sitemap-col panel panel--soft" aria-labelledby="sm-services">
           <h2 id="sm-services" class="sitemap-h">Услуги</h2>
           <ul class="sitemap-list">
             <li><a href="/services/services.html">Всички услуги</a></li>
@@ -54,7 +58,7 @@
           </ul>
         </section>
 
-        <section class="sitemap-group" aria-labelledby="sm-util">
+        <section class="sitemap-col panel panel--soft" aria-labelledby="sm-util">
           <h2 id="sm-util" class="sitemap-h">Помощни</h2>
           <ul class="sitemap-list">
             <li><a href="/sitemap.html">Sitemap</a></li>
@@ -66,8 +70,10 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
 
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

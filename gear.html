@@ -13,28 +13,31 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body class="page-gear">
+<body class="page-gear page-shell">
+  <!-- Header injected via shared script to keep layout consistent. -->
   <div id="header-slot"></div>
 
-  <main class="gear-page" aria-labelledby="gear-title">
-    <section class="gear-wrap">
-      <header class="gear-head">
-        <h1 id="gear-title" class="gear-title">Оборудване</h1>
-        <p class="gear-subtitle">
+  <main class="gear-page page-shell__page" aria-labelledby="gear-title">
+    <!-- Shared wrapper for “paper” layout. -->
+    <section class="gear-wrap page-shell__wrap">
+      <!-- Page title + intro. -->
+      <header class="gear-head page-shell__head">
+        <h1 id="gear-title" class="gear-title page-shell__title">Оборудване</h1>
+        <p class="gear-subtitle page-shell__subtitle">
           С какво снимам и с какво обработвам — за хората, които обичат детайлите.
         </p>
       </header>
 
       <div class="gear-content">
-        <!-- LEFT: main -->
-        <div class="gear-main">
-          <!-- Photo gear -->
+        <!-- LEFT: main content column. -->
+        <div class="gear-main panel">
+          <!-- Photo gear section. -->
           <section class="gear-group" aria-labelledby="gear-photo">
             <h2 class="gear-group-title" id="gear-photo">Фото техника</h2>
 
             <div class="gear-grid">
-              <!-- Camera -->
-              <article class="gear-card">
+              <!-- Camera entry. -->
+              <article class="gear-card panel panel--soft panel--raised panel--tight panel--hover">
                 <div class="gear-thumb">
                   <img src="/assets/img/gear/camera.jpg" alt="Canon R6 Mark II (камера)" loading="lazy" decoding="async">
                 </div>
@@ -47,8 +50,8 @@
                 </div>
               </article>
 
-              <!-- Lens -->
-              <article class="gear-card">
+              <!-- Lens entry. -->
+              <article class="gear-card panel panel--soft panel--raised panel--tight panel--hover">
                 <div class="gear-thumb">
                   <img src="/assets/img/gear/lens.jpg" alt="EF 24-70mm f/2.8L II USM (обектив)" loading="lazy" decoding="async">
                 </div>
@@ -61,8 +64,8 @@
                 </div>
               </article>
 
-              <!-- Microphone -->
-              <article class="gear-card">
+              <!-- Microphone entry. -->
+              <article class="gear-card panel panel--soft panel--raised panel--tight panel--hover">
                 <div class="gear-thumb">
                   <img src="/assets/img/gear/microphone.jpg" alt="RODE VideoMic (микрофон)" loading="lazy" decoding="async">
                 </div>
@@ -75,8 +78,8 @@
                 </div>
               </article>
 
-              <!-- Flash -->
-              <article class="gear-card">
+              <!-- Flash entry. -->
+              <article class="gear-card panel panel--soft panel--raised panel--tight panel--hover">
                 <div class="gear-thumb">
                   <img src="/assets/img/gear/flash.jpg" alt="Canon Speedlite 430EX (светкавица)" loading="lazy" decoding="async">
                 </div>
@@ -91,12 +94,13 @@
             </div>
           </section>
 
-          <!-- Editing -->
+          <!-- Editing software section. -->
           <section class="gear-group" aria-labelledby="gear-edit">
             <h2 class="gear-group-title" id="gear-edit">Софтуер за обработка</h2>
 
             <div class="gear-grid gear-grid--soft">
-              <article class="gear-card">
+              <!-- Lightroom entry (text tile). -->
+              <article class="gear-card panel panel--soft panel--raised panel--tight panel--hover">
                 <div class="gear-thumb gear-thumb--soft" aria-hidden="true">
                   <span class="gear-soft">LrC</span>
                 </div>
@@ -109,7 +113,8 @@
                 </div>
               </article>
 
-              <article class="gear-card">
+              <!-- Photoshop entry (text tile). -->
+              <article class="gear-card panel panel--soft panel--raised panel--tight panel--hover">
                 <div class="gear-thumb gear-thumb--soft" aria-hidden="true">
                   <span class="gear-soft">Ps</span>
                 </div>
@@ -129,13 +134,13 @@
           </section>
         </div>
 
-        <!-- RIGHT: sidebar -->
-        <aside class="gear-side" aria-label="Резюме и бърза информация">
+        <!-- RIGHT: sidebar with summaries and quick links. -->
+        <aside class="gear-side panel panel--soft" aria-label="Резюме и бърза информация">
           <h2 class="gear-side-title">Накратко</h2>
 
-          <div class="gear-side-box">
+          <div class="gear-side-box panel panel--compact">
             <h3 class="gear-side-h">Кит</h3>
-            <ul class="gear-side-list">
+            <ul class="gear-side-list list-dots">
               <li>Canon R6 Mark II</li>
               <li>EF 24-70mm f/2.8L II USM</li>
               <li>RODE VideoMic</li>
@@ -143,9 +148,9 @@
             </ul>
           </div>
 
-          <div class="gear-side-box">
+          <div class="gear-side-box panel panel--compact">
             <h3 class="gear-side-h">Обработка</h3>
-            <ul class="gear-side-list">
+            <ul class="gear-side-list list-dots">
               <li>Lightroom Classic</li>
               <li>Photoshop</li>
             </ul>
@@ -157,8 +162,10 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
 
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

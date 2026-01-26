@@ -12,21 +12,24 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body class="page-contact">
+<body class="page-contact page-shell">
+  <!-- Header is injected via script.js to keep layout consistent. -->
   <div id="header-slot"></div>
 
-  <main class="contact-page" aria-labelledby="contact-title">
-    <section class="contact-wrap">
-      <header class="contact-head">
-        <h1 id="contact-title" class="contact-title">Контакти</h1>
-        <p class="contact-subtitle">
+  <main class="contact-page page-shell__page" aria-labelledby="contact-title">
+    <!-- Shared wrapper provides consistent card styling and spacing. -->
+    <section class="contact-wrap page-shell__wrap">
+      <!-- Page title and short helper text. -->
+      <header class="contact-head page-shell__head">
+        <h1 id="contact-title" class="contact-title page-shell__title">Контакти</h1>
+        <p class="contact-subtitle page-shell__subtitle">
           За въпроси, записване за фотосесия, цени, лиценз за комерсиална употреба и други.
         </p>
       </header>
 
       <div class="contact-content">
-        <!-- LEFT: Form -->
-        <form id="contact-form" class="contact-form" novalidate>
+        <!-- LEFT: Contact form (client-side validation handled in contacts.js). -->
+        <form id="contact-form" class="contact-form panel" novalidate>
           <div class="field">
             <label for="cf-name">Име и фамилия <span aria-hidden="true">*</span></label>
             <input
@@ -91,6 +94,7 @@
             <p class="field-error" id="cf-message-error" aria-live="polite"></p>
           </div>
 
+          <!-- Actions and status note. -->
           <div class="form-actions">
             <button class="btn" type="submit">Изпрати</button>
             <p class="form-status" id="form-status" aria-live="polite">
@@ -99,21 +103,21 @@
           </div>
         </form>
 
-        <!-- RIGHT: Contact info -->
-        <aside class="contact-side" aria-label="Информация за контакт">
+        <!-- RIGHT: Contact info and quick reference. -->
+        <aside class="contact-side panel panel--soft" aria-label="Информация за контакт">
           <h2 class="contact-side-title">Детайли</h2>
 
-          <div class="side-item">
+          <div class="side-item panel panel--compact">
             <span class="side-k">Имейл</span>
             <a class="side-v" href="mailto:contacts@nikolaykesov.com">contacts@nikolaykesov.com</a>
           </div>
 
-          <div class="side-item">
+          <div class="side-item panel panel--compact">
             <span class="side-k">Локация</span>
             <span class="side-v">България</span>
           </div>
 
-          <div class="side-item">
+          <div class="side-item panel panel--compact">
             <span class="side-k">Отговор</span>
             <span class="side-v">до 24–48 часа</span>
           </div>
@@ -126,9 +130,12 @@
     </section>
   </main>
 
+  <!-- Footer is injected via script.js to match the header. -->
   <div id="footer-slot"></div>
 
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="./assets/js/script.js"></script>
+  <!-- Contact form behavior (validation + submission helper). -->
   <script src="./assets/js/contacts.js"></script>
 </body>
 </html>

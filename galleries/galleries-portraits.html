@@ -12,20 +12,23 @@
   <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body class="page-galleries page-gallery">
+<body class="page-galleries page-gallery page-shell">
+  <!-- Header injected via shared script. -->
   <div id="header-slot"></div>
 
-  <main class="galleries-page" aria-labelledby="gallery-title">
-    <section class="galleries-wrap">
-      <header class="galleries-head">
+  <main class="galleries-page page-shell__page" aria-labelledby="gallery-title">
+    <!-- Shared wrapper for gallery page layout. -->
+    <section class="galleries-wrap page-shell__wrap">
+      <!-- Page title and breadcrumb. -->
+      <header class="galleries-head page-shell__head">
         <p class="galleries-kicker"><a href="/galleries/galleries.html">Галерии</a> / Портрети</p>
-        <h1 id="gallery-title" class="galleries-title">Портрети</h1>
-        <p class="galleries-subtitle">Подбрани кадри от портретни фотосесии.</p>
+        <h1 id="gallery-title" class="galleries-title page-shell__title">Портрети</h1>
+        <p class="galleries-subtitle page-shell__subtitle">Подбрани кадри от портретни фотосесии.</p>
       </header>
 
       <div class="galleries-content">
-        <!-- LEFT -->
-        <section class="galleries-main" aria-label="Галерия портрети">
+        <!-- LEFT: gallery grid and toolbar. -->
+        <section class="galleries-main panel" aria-label="Галерия портрети">
           <div class="gallery-toolbar">
             <div class="gallery-meta">
               <span class="gallery-count"><span class="js-gallery-count">0</span> снимки</span>
@@ -40,20 +43,20 @@
           </p>
         </section>
 
-        <!-- RIGHT -->
-        <aside class="galleries-side" aria-label="Информация">
+        <!-- RIGHT: quick summary and navigation. -->
+        <aside class="galleries-side panel panel--soft" aria-label="Информация">
           <h2 class="galleries-side-title">Накратко</h2>
 
-          <div class="galleries-side-box">
+          <div class="galleries-side-box panel panel--compact">
             <h3 class="galleries-side-h">Стил</h3>
-            <ul class="galleries-side-list">
+            <ul class="galleries-side-list list-dots">
               <li>Естествена светлина</li>
               <li>Чисти цветове</li>
               <li>Насоки по време на снимане</li>
             </ul>
           </div>
 
-          <div class="galleries-side-box">
+          <div class="galleries-side-box panel panel--compact">
             <h3 class="galleries-side-h">Още</h3>
             <div class="galleries-side-actions">
               <a class="btn" href="/contacts.html">Запитване</a>
@@ -66,7 +69,7 @@
     </section>
   </main>
 
-  <!-- JSON data (edit these filenames to match your real files) -->
+  <!-- JSON data (edit filenames to match real assets). -->
   <script type="application/json" id="gallery-data">
   {
     "title": "Портрети",
@@ -81,7 +84,9 @@
   }
   </script>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="../assets/js/script.js"></script>
 </body>
 </html>

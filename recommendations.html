@@ -12,32 +12,38 @@
   <link rel="icon" type="image/x-icon" href="./assets/img/Favicon.svg">
 </head>
 
-<body class="page-recs">
+<body class="page-recs page-shell">
+  <!-- Header injected via shared script to keep nav consistent. -->
   <div id="header-slot"></div>
 
-  <main class="recs-page" aria-labelledby="recs-title">
-    <section class="recs-wrap">
-      <header class="recs-head">
-        <h1 id="recs-title" class="recs-title">Препоръки</h1>
-        <p class="recs-subtitle">
+  <main class="recs-page page-shell__page" aria-labelledby="recs-title">
+    <!-- Shared wrapper for page layout. -->
+    <section class="recs-wrap page-shell__wrap">
+      <!-- Page title and intro. -->
+      <header class="recs-head page-shell__head">
+        <h1 id="recs-title" class="recs-title page-shell__title">Препоръки</h1>
+        <p class="recs-subtitle page-shell__subtitle">
           Мнения от хора, с които съм работил — преживяване, комуникация и резултат.
         </p>
       </header>
 
       <div class="recs-content">
-        <!-- LEFT -->
-        <div class="recs-main">
+        <!-- LEFT: review list + filters. -->
+        <div class="recs-main panel">
+          <!-- Filter chips control the visible reviews. -->
           <div class="recs-toolbar" role="group" aria-label="Филтър по тип снимане">
             <button class="recs-chip is-active" type="button" data-filter="all">Всички</button>
             <button class="recs-chip" type="button" data-filter="portraits">Портрети</button>
             <button class="recs-chip" type="button" data-filter="events">Събития</button>
           </div>
 
+          <!-- Empty state when filters match nothing. -->
           <p class="recs-empty" hidden>Няма отзиви, които да съвпадат с филтъра.</p>
 
+          <!-- Review cards grid. -->
           <section class="recs-grid" aria-label="Отзиви">
             <!-- Review 1 -->
-            <article class="rec-card" data-cat="portraits">
+            <article class="rec-card panel panel--soft panel--raised panel--tight panel--hover" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Мария П.</h2>
@@ -60,7 +66,7 @@
             </article>
 
             <!-- Review 2 -->
-            <article class="rec-card" data-cat="events">
+            <article class="rec-card panel panel--soft panel--raised panel--tight panel--hover" data-cat="events">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Иван К.</h2>
@@ -83,7 +89,7 @@
             </article>
 
             <!-- Review 3 -->
-            <article class="rec-card" data-cat="portraits">
+            <article class="rec-card panel panel--soft panel--raised panel--tight panel--hover" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Надежда С.</h2>
@@ -106,7 +112,7 @@
             </article>
 
             <!-- Review 4 -->
-            <article class="rec-card" data-cat="portraits">
+            <article class="rec-card panel panel--soft panel--raised panel--tight panel--hover" data-cat="portraits">
               <header class="rec-top">
                 <div class="rec-who">
                   <h2 class="rec-name">Даниел Г.</h2>
@@ -130,11 +136,11 @@
           </section>
         </div>
 
-        <!-- RIGHT -->
-        <aside class="recs-side" aria-label="Обобщение и контакт">
+        <!-- RIGHT: summary and contact prompt. -->
+        <aside class="recs-side panel panel--soft" aria-label="Обобщение и контакт">
           <h2 class="recs-side-title">Обобщение</h2>
 
-          <div class="recs-side-box">
+          <div class="recs-side-box panel panel--compact">
             <h3 class="recs-side-h">Средна оценка</h3>
             <div class="recs-avg">
               <span class="recs-avg-num">4.9</span>
@@ -149,9 +155,9 @@
             <p class="recs-side-text">*примерни стойности — смени ги с реалните.</p>
           </div>
 
-          <div class="recs-side-box">
+          <div class="recs-side-box panel panel--compact">
             <h3 class="recs-side-h">Какво ценят хората</h3>
-            <ul class="recs-side-list">
+            <ul class="recs-side-list list-dots">
               <li>Бърза комуникация</li>
               <li>Спокойна атмосфера</li>
               <li>Естествени кадри</li>
@@ -159,7 +165,7 @@
             </ul>
           </div>
 
-          <div class="recs-side-box">
+          <div class="recs-side-box panel panel--compact">
             <h3 class="recs-side-h">Искаш да оставиш мнение?</h3>
             <p class="recs-side-text">
               Пиши ми през Контакти и ми кажи накратко как е минала фотосесията — ще го добавя тук.
@@ -172,7 +178,9 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

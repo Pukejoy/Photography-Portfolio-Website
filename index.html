@@ -13,10 +13,11 @@
 </head>
 
 <body class="page-home">
+  <!-- Header injected via shared script to keep nav consistent. -->
   <div id="header-slot"></div>
 
   <main class="home" aria-labelledby="home-title">
-    <!-- HERO -->
+    <!-- HERO: main visual and primary calls-to-action. -->
     <section class="home-hero" aria-label="Водеща снимка и основни действия">
       <div class="home-hero-media" aria-hidden="true">
         <img
@@ -28,6 +29,7 @@
       </div>
 
       <div class="home-hero-inner">
+        <!-- Card sits above the hero image for readability. -->
         <div class="home-hero-card">
           <h1 id="home-title" class="home-hero-title">Фотография, която остава.</h1>
           <p class="home-hero-subtitle">
@@ -45,6 +47,7 @@
           </div>
         </div>
 
+        <!-- Scroll hint anchors to the next section. -->
         <a class="home-scroll" href="#home-start" aria-label="Скролни надолу към съдържанието">
           <span class="home-scroll-dot" aria-hidden="true"></span>
           <span class="home-scroll-text">Скролни</span>
@@ -52,7 +55,7 @@
       </div>
     </section>
 
-    <!-- QUICK LINKS -->
+    <!-- QUICK LINKS: fast paths to key pages. -->
     <section id="home-start" class="home-section" aria-label="Бързи връзки">
       <div class="home-container">
         <header class="home-section-head">
@@ -62,26 +65,27 @@
           </p>
         </header>
 
+        <!-- Cards use shared panel utilities for consistent styling. -->
         <div class="home-cards">
-          <a class="home-card" href="/services/services.html">
+          <a class="home-card panel panel--soft panel--raised panel--hover" href="/services/services.html">
             <h3 class="home-card-h">Услуги</h3>
             <p class="home-card-p">Какво снимам и как протича работата.</p>
             <span class="home-card-link">Отвори</span>
           </a>
 
-          <a class="home-card" href="/recommendations.html">
+          <a class="home-card panel panel--soft panel--raised panel--hover" href="/recommendations.html">
             <h3 class="home-card-h">Препоръки</h3>
             <p class="home-card-p">Реални впечатления и оценки от клиенти.</p>
             <span class="home-card-link">Отвори</span>
           </a>
 
-          <a class="home-card" href="/faq.html">
+          <a class="home-card panel panel--soft panel--raised panel--hover" href="/faq.html">
             <h3 class="home-card-h">ЧЗВ</h3>
             <p class="home-card-p">Срокове, цени, RAW, лицензиране и др.</p>
             <span class="home-card-link">Отвори</span>
           </a>
 
-          <a class="home-card" href="/gear.html">
+          <a class="home-card panel panel--soft panel--raised panel--hover" href="/gear.html">
             <h3 class="home-card-h">Оборудване</h3>
             <p class="home-card-p">С какво снимам и обработвам.</p>
             <span class="home-card-link">Отвори</span>
@@ -90,7 +94,7 @@
       </div>
     </section>
 
-    <!-- FEATURE STRIPS -->
+    <!-- FEATURE STRIPS: image + text pairs. -->
     <section class="home-section" aria-label="Избрани секции със снимки">
       <div class="home-container">
         <div class="home-feature home-feature--right">
@@ -101,7 +105,8 @@
                  loading="lazy" decoding="async">
           </div>
 
-          <div class="home-feature-body">
+          <!-- Text card for the feature block. -->
+          <div class="home-feature-body panel">
             <h2 class="home-h2">Портрети с характер</h2>
             <p class="home-lead">
               Чисти кадри, приятен процес и насоки, ако не си сигурен как да позираш.
@@ -121,7 +126,8 @@
                  loading="lazy" decoding="async">
           </div>
 
-          <div class="home-feature-body">
+          <!-- Text card for the feature block. -->
+          <div class="home-feature-body panel">
             <h2 class="home-h2">Събития без напрежение</h2>
             <p class="home-lead">
               Документално усещане + силни моменти. Дискретно присъствие и стабилен резултат.
@@ -135,7 +141,7 @@
       </div>
     </section>
 
-    <!-- PHOTO MOSAIC -->
+    <!-- PHOTO MOSAIC: gallery preview grid. -->
     <section class="home-section" aria-label="Още кадри">
       <div class="home-container">
         <header class="home-section-head">
@@ -168,7 +174,7 @@
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA: final call to action. -->
     <section class="home-section" aria-label="Финален призив към действие">
       <div class="home-container">
         <div class="home-cta">
@@ -188,8 +194,10 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
 
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

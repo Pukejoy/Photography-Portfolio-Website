@@ -12,23 +12,26 @@
   <link rel="icon" type="image/x-icon" href="../assets/img/Favicon.svg">
 </head>
 
-<body class="page-services page-services-events">
+<body class="page-services page-services-events page-shell">
+  <!-- Header injected via shared script. -->
   <div id="header-slot"></div>
 
-  <main class="services-page" aria-labelledby="events-title">
-    <section class="services-wrap">
-      <header class="services-head">
+  <main class="services-page page-shell__page" aria-labelledby="events-title">
+    <!-- Shared wrapper for “paper” layout. -->
+    <section class="services-wrap page-shell__wrap">
+      <!-- Breadcrumb + page title. -->
+      <header class="services-head page-shell__head">
         <p class="services-kicker"><a href="/services/services.html">Услуги</a> / Събития</p>
-        <h1 id="events-title" class="services-title">Събития</h1>
-        <p class="services-subtitle">
+        <h1 id="events-title" class="services-title page-shell__title">Събития</h1>
+        <p class="services-subtitle page-shell__subtitle">
           Репортажен стил + ключови кадри. Целта е да уловя моментите без да “преча” на събитието.
         </p>
       </header>
 
       <div class="services-content">
-        <!-- LEFT -->
+        <!-- LEFT: service details and packages. -->
         <section class="services-main" aria-label="Детайли за събития">
-          <div class="services-card">
+          <div class="services-card panel panel--soft panel--raised">
             <h2 class="services-h">Подход</h2>
             <p class="services-p">
               Работя дискретно и целя естествени кадри. При нужда — кратки насоки за групови снимки,
@@ -36,7 +39,7 @@
             </p>
           </div>
 
-          <div class="services-card">
+          <div class="services-card panel panel--soft panel--raised">
             <h2 class="services-h">Какво получаваш</h2>
             <ul class="services-bullets">
               <li>Подбрани и обработени кадри (цветове, контраст, кадриране)</li>
@@ -48,34 +51,34 @@
             </p>
           </div>
 
-          <div class="services-card">
+          <div class="services-card panel panel--soft panel--raised">
             <h2 class="services-h">Пакети (примерни)</h2>
 
             <div class="services-packages">
-              <article class="services-package">
+              <article class="services-package panel panel--compact">
                 <h3 class="services-package-h">Кратко събитие</h3>
                 <p class="services-package-p">Подходящо за малки събития/частни поводи.</p>
-                <ul class="services-mini">
+                <ul class="services-mini list-dots">
                   <li>до ~2 часа</li>
                   <li>подбрани обработени кадри</li>
                   <li>онлайн галерия</li>
                 </ul>
               </article>
 
-              <article class="services-package">
+              <article class="services-package panel panel--compact">
                 <h3 class="services-package-h">Стандарт</h3>
                 <p class="services-package-p">Най-често избиран вариант.</p>
-                <ul class="services-mini">
+                <ul class="services-mini list-dots">
                   <li>до ~4 часа</li>
                   <li>повече ключови моменти</li>
                   <li>онлайн галерия</li>
                 </ul>
               </article>
 
-              <article class="services-package">
+              <article class="services-package panel panel--compact">
                 <h3 class="services-package-h">Разширен</h3>
                 <p class="services-package-p">За по-дълги/по-динамични събития.</p>
-                <ul class="services-mini">
+                <ul class="services-mini list-dots">
                   <li>до ~6+ часа</li>
                   <li>пълен репортаж</li>
                   <li>онлайн галерия</li>
@@ -89,13 +92,13 @@
           </div>
         </section>
 
-        <!-- RIGHT -->
-        <aside class="services-side" aria-label="Резюме и действие">
+        <!-- RIGHT: summary and action links. -->
+        <aside class="services-side panel panel--soft" aria-label="Резюме и действие">
           <h2 class="services-side-title">Бързо запитване</h2>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Подходящо за</h3>
-            <ul class="services-side-list">
+            <ul class="services-side-list list-dots">
               <li>Рождени дни</li>
               <li>Фирмени събития</li>
               <li>Частни поводи</li>
@@ -103,9 +106,9 @@
             </ul>
           </div>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Какво да напишеш</h3>
-            <ul class="services-side-list">
+            <ul class="services-side-list list-dots">
               <li>Дата + град</li>
               <li>Тип събитие</li>
               <li>Прибл. продължителност</li>
@@ -113,7 +116,7 @@
             </ul>
           </div>
 
-          <div class="services-side-box">
+          <div class="services-side-box panel panel--compact">
             <h3 class="services-side-h">Действие</h3>
             <div class="services-side-actions">
               <a class="btn" href="/contacts.html">Към Контакти</a>
@@ -125,7 +128,9 @@
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="../assets/js/script.js"></script>
 </body>
 </html>

@@ -13,10 +13,13 @@
 </head>
 
 <body class="page-styleguide">
+  <!-- Header injected via shared script. -->
   <div id="header-slot"></div>
 
   <main class="sg-page" aria-labelledby="sg-title">
-    <section class="sg-card">
+    <!-- Wrapper card for the style guide content. -->
+    <section class="sg-wrap">
+      <!-- Page title and intro. -->
       <header class="sg-head">
         <h1 id="sg-title" class="sg-title">Style Guide</h1>
         <p class="sg-subtitle">
@@ -25,8 +28,8 @@
       </header>
 
       <div class="sg-grid">
-        <!-- Typography -->
-        <section class="sg-section" aria-labelledby="sg-type">
+        <!-- Typography scale and examples. -->
+        <section class="sg-section panel panel--soft" aria-labelledby="sg-type">
           <h2 id="sg-type" class="sg-h">Типография</h2>
 
           <div class="sg-type">
@@ -59,8 +62,8 @@
           </div>
         </section>
 
-        <!-- Colors -->
-        <section class="sg-section" aria-labelledby="sg-colors">
+        <!-- Core color palette. -->
+        <section class="sg-section panel panel--soft" aria-labelledby="sg-colors">
           <h2 id="sg-colors" class="sg-h">Цветове</h2>
 
           <div class="sg-swatches">
@@ -102,8 +105,8 @@
           </div>
         </section>
 
-        <!-- Buttons + states -->
-        <section class="sg-section" aria-labelledby="sg-components">
+        <!-- Buttons and link states. -->
+        <section class="sg-section panel panel--soft" aria-labelledby="sg-components">
           <h2 id="sg-components" class="sg-h">Компоненти</h2>
 
           <div class="sg-actions">
@@ -120,8 +123,8 @@
           </div>
         </section>
 
-        <!-- Spacing + layout -->
-        <section class="sg-section" aria-labelledby="sg-layout">
+        <!-- Spacing and layout guidance. -->
+        <section class="sg-section panel panel--soft" aria-labelledby="sg-layout">
           <h2 id="sg-layout" class="sg-h">Разстояния</h2>
 
           <ul class="sg-list">
@@ -137,14 +140,17 @@
         </section>
       </div>
 
+      <!-- Footer action to return home. -->
       <footer class="sg-foot">
         <a class="btn" href="/index.html">Към Начало</a>
       </footer>
     </section>
   </main>
 
+  <!-- Footer injected via shared script. -->
   <div id="footer-slot"></div>
 
+  <!-- Base UI behavior for header/footer injection. -->
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
